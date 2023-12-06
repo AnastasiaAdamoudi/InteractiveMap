@@ -60,6 +60,45 @@ const fetchData = async (dataType) => { // this is a function that takes in a da
     }
   }
 
+  const joinMemberToBeacon = (beaconIndex, memberName) => {
+    // Fetch the current data
+    const beaconsData = fetchData('beaconsData');
+  
+    if (beaconsData && beaconIndex < beaconsData.length) {
+      const beacon = beaconsData[beaconIndex];
+  
+      // Check if the 'members' array exists, if not, create it
+      if (!beacon.members) {
+        beacon.members = [];
+      }
+  
+      // Check if the member has already joined this beacon
+      if (beacon.members.includes(memberName)) {
+        console.error(`Member ${memberName} has already joined this beacon.`);
+        return; // Stop the function execution if the member has already joined
+      }
+  
+      // Add the member to the 'members' array
+      beacon.members.push(memberName);
+  
+      // Save the updated data
+      saveData('beaconsData', beaconsData);
+    }
+  };
+  
 
-  export { fetchData, saveData, deleteData, updateData };
+const deleteMemberFromBeacon = (beaconIndex, memberName) => {
+
+    const beaconsData = fetchData('beaconsData');
+
+    if (beaconsData && beaconIndex < beaconsData.length) {
+        beaconsData[beaconIndex].members = beaconsData[beaconIndex].members.filter((member) => member !== memberName); // this is filtering the members array of the beacon and removing the memberName from it
+
+        saveData('beaconsData', beaconsData);
+    }
+};
+  
+
+
+  export { fetchData, saveData, deleteData, updateData, joinMemberToBeacon }; // this is exporting the functions so that they can be used in other files
   
