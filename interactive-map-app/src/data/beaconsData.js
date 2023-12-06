@@ -1,0 +1,61 @@
+const beaconsData = [
+    {
+      "locationName": "Event Location 1",
+      "latitude": 37.7749,
+      "longitude": -122.4194,
+      "beaconName": "Beacon 1",
+      "causeDescription": "A description of the cause for Event 1",
+      "members": [
+        {
+          "name": "",
+          "email": "",
+          "url": ""
+        }
+        ]
+    },
+    {
+      "locationName": "Event Location 2",
+      "latitude": 40.7128,
+      "longitude": -74.0060,
+      "beaconName": "Beacon 2",
+      "causeDescription": "A description of the cause for Event 2",
+      "members": [
+        {
+          "name": "",
+          "email": "",
+          "url": ""
+        }
+        ]
+    },
+    {
+        "locationName": "Event Location 3",
+        "latitude": 32.7767,
+        "longitude": -96.7970,
+        "beaconName": "Beacon 3",
+        "causeDescription": "A description of the cause for Event 3",
+        "members": [
+            {
+              "name": "",
+              "email": "",
+              "url": ""
+            }
+            ]
+    },
+    {
+        "locationName": "Event Location 4",
+        "latitude": 34.0522,
+        "longitude": -58.2437,
+        "beaconName": "Beacon 4",
+        "causeDescription": "A description of the cause for Event 4",
+        "members": [
+            {
+              "name": "",
+              "email": "",
+              "url": ""
+            }
+            ]
+    }
+  ]
+
+  export { beaconsData };
+  
