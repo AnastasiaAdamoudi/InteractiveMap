@@ -1,0 +1,27 @@
+.header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    gap: 10px;
+    align-items: center;
+    background-color: rgb(190, 195, 198);
+    padding: 0 20px;
+    height: 12vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.header-container .header-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #D61D4D;
+}
+
+.header-container .torch-image {
+    width: auto;
+    height: 100px;
+}

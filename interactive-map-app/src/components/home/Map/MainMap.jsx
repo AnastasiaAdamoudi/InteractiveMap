@@ -1,18 +1,19 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import "./MainMap.css";
 import { beaconsData } from "../../../data/beaconsData.js";
 import { CreateBeaconButton, JoinBeaconButton, DisplayMembersButton, BeaconPopup } from '../index.js';
 
 const MainMap = () => {
 
   return (
-    <div style = {{display: "flex", justifyContent: "center", width: "100%"}}>
+    <div className="map-container">
       <MapContainer
         attribution='&amp;copy <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
         center={[40.102947, 22.502612]}
         zoom={3}
         scrollWheelZoom={false}
-        style={{ height: "100%", width: "100%", zIndex: "0", position: "fixed", top: "0", left: "0", right: "0", bottom: "0", margin: "auto" }}
+        className="map"
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 

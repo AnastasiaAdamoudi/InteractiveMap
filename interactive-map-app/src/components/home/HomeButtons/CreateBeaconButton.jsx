@@ -1,9 +1,11 @@
-import React from 'react'
+import { createButton } from '../../../assets/index.js';
+import './CreateBeaconButton.css';
 
 const CreateBeaconButton = () => {
   return (
-    <div>
-        <button className="home-button-create-beacon">Create Beacon</button>
+    <div className="create-beacon-button-container">
+        <img src={createButton} alt="create-beacon" className="create-beacon-button-img" />
+        <p className="create-beacon-button-text">Create Beacon</p>
     </div>
   )
 }

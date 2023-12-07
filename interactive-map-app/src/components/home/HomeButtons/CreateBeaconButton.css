@@ -1,0 +1,28 @@
+.create-beacon-button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: bottom;
+    background-color: rgb(190, 195, 198);
+    color: #4D007E;
+    border: 2px solid #D61D4D;
+    border-radius: 10%;
+    height: 20vh;
+    width: 10vh;
+    position: fixed;
+    padding: 20px;
+    right: 5vh;
+    bottom: 5vh;
+    z-index: 2;
+}
+
+.create-beacon-button-container .create-beacon-img {
+    width: 5vh;
+    height: auto;
+}
+
+.create-beacon-button-container .create-beacon-text {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
