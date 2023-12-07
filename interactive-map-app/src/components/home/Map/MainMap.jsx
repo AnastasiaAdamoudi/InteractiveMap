@@ -1,6 +1,7 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { beaconsData } from "../../data/beaconsData.js";
+import { beaconsData } from "../../../data/beaconsData.js";
+import { CreateBeaconButton, JoinBeaconButton, DisplayMembersButton, BeaconPopup } from '../index.js';
 
 const MainMap = () => {
 
@@ -9,9 +10,9 @@ const MainMap = () => {
       <MapContainer
         attribution='&amp;copy <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
         center={[40.102947, 22.502612]}
-        zoom={2}
+        zoom={3}
         scrollWheelZoom={false}
-        style={{ height: "800px", width: "2000px" }}
+        style={{ height: "100%", width: "100%", zIndex: "0", position: "fixed", top: "0", left: "0", right: "0", bottom: "0", margin: "auto" }}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
@@ -21,8 +22,7 @@ const MainMap = () => {
             position={[beacon.latitude, beacon.longitude]}
           >
             <Popup>
-              <h2 className="popup-title">{beacon.beaconName}</h2>
-              <p className="popup-p">{beacon.causeDescription}</p>
+              <BeaconPopup beacon={beacon} />
             </Popup>
           </Marker>
         ))}

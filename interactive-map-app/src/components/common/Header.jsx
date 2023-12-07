@@ -1,10 +1,16 @@
-import React from 'react'
+import './Header.css'
+import { torch } from '../../assets/index.js';
 
 const Header = () => {
   return (
-    <div>
+    <>
+    <div className="header">
+
+      <img src={torch} alt="torch" className="torch-image" />
+      <h1>Light A Beacon</h1>
       
     </div>
+    </>
   )
 }
 

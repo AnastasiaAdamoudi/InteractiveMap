@@ -1,4 +1,4 @@
-import MainMap from '../components/home/MainMap';
+import MainMap from '../components/home/Map/MainMap.jsx';
 
 const Home = () => {
   return (
