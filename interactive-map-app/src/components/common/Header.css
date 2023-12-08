@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: row;
     justify-content: start;
-    gap: 10px;
+    gap: 20px;
     align-items: center;
     background-color: rgb(190, 195, 198);
     padding: 0 20px;
@@ -16,12 +16,14 @@
 }
 
 .header-container .header-title {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 500;
     color: #D61D4D;
+    text-transform: uppercase;
 }
 
-.header-container .torch-image {
+.header-container .beacon-image {
     width: auto;
-    height: 100px;
+    height: 18vh;
+    padding-top: 4px;
 }
