@@ -3,10 +3,12 @@ import { JoinBeaconButton, DisplayMembersButton } from '../index';
 const BeaconPopUp = ({beacon}) => {
   return (
     <div>
-      <h2 className="popup-title">{beacon.beaconName}</h2>
-              <p className="popup-p">{beacon.causeDescription}</p>
-              <JoinBeaconButton />
-              <DisplayMembersButton />
+    <h2 className="popup-title">Beacon #{beacon.number} created by {beacon.creatorName} ({beacon.creatorEmail}) </h2>
+      <h1 className="popup-subtitle">Name of {beacon.beaconName}</h1>
+              <p className="popup-text">{beacon.beaconDescription}</p>
+              <a className="popup-link" href={beacon.beaconURL}>More about this beacon</a>
+              {/* <JoinBeaconButton />
+              <DisplayMembersButton /> */}
     </div>
   )
 }
