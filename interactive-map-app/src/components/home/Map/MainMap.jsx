@@ -3,7 +3,7 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import "./MainMap.css";
 import { beaconsData } from "../../../data/beaconsData.js";
-import { BeaconPopup } from '../index.js';
+import { BeaconPopup } from '../MapPopups/index.js';
 import { pinCandle, pinShadow } from '../../../assets/index.js';
 
 const MainMap = () => {

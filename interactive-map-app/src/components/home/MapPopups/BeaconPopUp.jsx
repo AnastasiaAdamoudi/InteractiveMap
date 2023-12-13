@@ -1,6 +1,6 @@
-import { JoinBeaconButton, DisplayMembersButton } from '../index';
+// import { JoinBeaconButton, DisplayMembersButton } from './index.js';
 
-const BeaconPopUp = ({beacon}) => {
+const BeaconPopup = ({beacon}) => {
   return (
     <div>
     <h2 className="popup-title">Beacon #{beacon.number} created by {beacon.creatorName} ({beacon.creatorEmail}) </h2>
@@ -13,4 +13,4 @@ const BeaconPopUp = ({beacon}) => {
   )
 }
 
-export default BeaconPopUp;
+export default BeaconPopup;
