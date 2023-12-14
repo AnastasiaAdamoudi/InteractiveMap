@@ -1,4 +1,5 @@
 import Popup from "reactjs-popup";
+import "../HeaderPopups.css";
 
 const AboutPopup = ({ isOpen, onClose }) => {
   return (

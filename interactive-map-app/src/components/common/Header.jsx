@@ -1,8 +1,8 @@
 import './Header.css';
 import { beaconEllipse } from '../../assets/index.js';
 import { useState } from "react";
-import AboutPopup from "../home/About";
-import GuidancePopup from "../home/Guidance";
+import AboutPopup from "../home/HeaderPopups/About/index.js";
+import GuidancePopup from "../home/HeaderPopups/Guidance/index.js";
 
 const Header = () => {
   const [aboutOpen, setAboutOpen] = useState(false);
