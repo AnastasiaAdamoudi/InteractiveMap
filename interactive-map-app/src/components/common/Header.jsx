@@ -1,12 +1,25 @@
 import './Header.css';
 import { beaconEllipse } from '../../assets/index.js';
-import { useState } from "react";
 import AboutPopup from "../home/HeaderPopups/About/index.js";
 import GuidancePopup from "../home/HeaderPopups/Guidance/index.js";
 
-const Header = () => {
-  const [aboutOpen, setAboutOpen] = useState(false);
-  const [guidanceOpen, setGuidanceOpen] = useState(false);
+const Header = ({ modalState, setModalState }) => {
+
+  const { aboutOpen, guidanceOpen } = modalState;
+
+  const toggleAboutModal = () => {
+    setModalState({
+      aboutOpen: !aboutOpen,
+      guidanceOpen,
+    });
+  };
+
+  const toggleGuidanceModal = () => {
+    setModalState({
+      aboutOpen,
+      guidanceOpen: !guidanceOpen,
+    });
+  };
 
   return (
     <>
@@ -16,7 +29,7 @@ const Header = () => {
 
         <button
           type="button"
-          onClick={() => setAboutOpen((o) => !o)}
+          onClick={toggleAboutModal}
           className="header-popup-button"
         >
           About
@@ -24,14 +37,14 @@ const Header = () => {
 
         <button
           type="button"
-          onClick={() => setGuidanceOpen((o) => !o)}
+          onClick={toggleGuidanceModal}
           className="header-popup-button"
         >
           Guidance
         </button>
 
-        <AboutPopup isOpen={aboutOpen} onClose={() => setAboutOpen(false)} />
-        <GuidancePopup isOpen={guidanceOpen} onClose={() => setGuidanceOpen(false)} />
+        <AboutPopup isOpen={aboutOpen} onClose={toggleAboutModal} />
+        <GuidancePopup isOpen={guidanceOpen} onClose={toggleGuidanceModal} />
 
       </div>
     </>
