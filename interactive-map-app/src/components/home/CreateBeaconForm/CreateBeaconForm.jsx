@@ -1,7 +1,6 @@
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
-import "./FormPopup.css";
-// import FormContent from "./FormContent";
+import "./CreateBeaconForm.css";
 import axios from 'axios';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -77,7 +76,9 @@ const CreateBeaconForm = ({ isOpen, onClose, beacons, updateBeacons, beaconArray
   return (
     <Modal
       open={isOpen}
-      onClose={onClose}
+      onClose={() => { onClose()
+      reset()}
+      }
       center
       closeIcon={closeIcon}
       classNames={{
