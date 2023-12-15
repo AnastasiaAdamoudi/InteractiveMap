@@ -18,12 +18,17 @@ function App() {
     });
   };
 
+  const [formOpen, setFormOpen] = useState(false);
+  const closeForm = () => {
+    setFormOpen(false);
+  };
+
   return (
     <Router>
     <div>
       <Header modalState={modalState} setModalState={setModalState} closeModal={closeModal} />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home formOpen={formOpen} setFormOpen={setFormOpen} closeForm={closeForm} />} />
       </Routes>
       <Footer />
     </div>

@@ -1,0 +1,21 @@
+.customOverlay {
+    background: rgba(36, 123, 160, 0.7);
+  }
+
+.customModal {
+    background: #b2dbbf;
+    max-width: 500px;
+    width: 100%;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+
+
+  .text-popups-text {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-size: 20px;
+  }
