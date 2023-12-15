@@ -1,60 +1,28 @@
 import "./FormPopup.css";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
-import { beaconsData } from "../../../data/beaconsData.js";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
 const schema = z.object({
-    creatorName: z.string().nonempty({ message: "Creator name is required" }),
-    creatorEmail: z.string().email({ message: "Invalid email address" }),
-    beaconName: z.string().nonempty({ message: "Beacon name is required" }),
-    beaconLocation: z.string().nonempty({ message: "Beacon location is required" }),
-    beaconLatitude: z.string().nonempty({ message: "Beacon latitude is required" }),
-    beaconLongitude: z.string().nonempty({ message: "Beacon longitude is required" }),
-    beaconDescription: z.string().nonempty({ message: "Beacon description is required" }),
-    beaconUrl: z.string().url({ message: "Invalid URL" }),
+  creatorName: z.string().nonempty({ message: "Creator name is required" }),
+  creatorEmail: z.string().email({ message: "Invalid email address" }),
+  beaconName: z.string().nonempty({ message: "Beacon name is required" }),
+  beaconLocation: z.string().nonempty({ message: "Beacon location is required" }),
+  beaconLatitude: z.string().nonempty({ message: "Beacon latitude is required" }),
+  beaconLongitude: z.string().nonempty({ message: "Beacon longitude is required" }),
+  beaconDescription: z.string().nonempty({ message: "Beacon description is required" }),
+  beaconUrl: z.string(),
 });
 
 const FormContent = ({ onSubmit }) => {
 
-    const { register, handleSubmit, setValue, formState } = useForm({ resolver: zodResolver(schema) });
-    const [beacons, setBeacons] = useState(beaconsData);
+  const { register, handleSubmit, formState, reset } = useForm({ resolver: zodResolver(schema) });
 
-    const submitBeaconData = (formData) => {
-        const newBeacon = {
-            number: (beacons.length + 1).toString(),
-            creatorName: formData.creatorName,
-            creatorEmail: formData.creatorEmail,
-            beaconName: formData.beaconName,
-            beaconLocation: formData.beaconLocation,
-            beaconLatitude: parseFloat(formData.beaconLatitude),
-            beaconLongitude: parseFloat(formData.beaconLongitude),
-            beaconDescription: formData.beaconDescription,
-            beaconUrl: formData.beaconUrl,
-        };
+  const { errors } = formState;
 
-        setBeacons([...beacons, newBeacon]);
-
-        console.log("Updated Beacons Data:", beacons);
-
-        setValue("name", "");
-        setValue("email", "");
-        setValue("beaconName", "");
-        setValue("beaconLocation", "");
-        setValue("beaconDescription", "");
-        setValue("beaconLatitude", "");
-        setValue("beaconLongitude", "");
-        setValue("beaconUrl", "");
-
-        onSubmit(formData);
-    }
-
-    const { errors } = formState;
-
-    return (
-        <div className="form-container">
-            <form onSubmit={handleSubmit(submitBeaconData)}>
+  return (
+    <div className="form-container">
+      <form onSubmit={handleSubmit(onSubmit)}>
 
                 <div className="form-group">
                     <label htmlFor="creatorName">Creator Name</label>
