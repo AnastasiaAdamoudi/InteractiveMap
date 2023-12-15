@@ -32,7 +32,7 @@ const MainMap = () => {
         {beaconsData.map((beacon, index) => (
           <Marker
             key={index}
-            position={[beacon.latitude, beacon.longitude]}
+            position={[beacon.beaconLatitude, beacon.beaconLongitude]}
             icon={customMarker}
           >
             <Popup>

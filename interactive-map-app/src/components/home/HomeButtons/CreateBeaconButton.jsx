@@ -1,5 +1,5 @@
 import { createButton } from '../../../assets/index.js';
-import CreateBeaconForm from '../CreateBeaconForm/CreateBeaconForm.jsx';
+import { CreateBeaconForm } from '../CreateBeaconForm/index.js';
 import './CreateBeaconButton.css';
 
 const CreateBeaconButton = ({ formOpen, setFormOpen, closeForm }) => {

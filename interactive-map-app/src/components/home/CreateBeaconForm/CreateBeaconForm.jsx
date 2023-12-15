@@ -1,8 +1,16 @@
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import "./FormPopup.css";
+import { useForm } from "react-hook-form";
+import { FormContent } from "./index.js";
 
 const CreateBeaconForm = ({ isOpen, onClose }) => {
+
+  const { register, handleSubmit, errors } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
 
   const closeIcon = (
     <svg fill="#6227a1" viewBox="0 0 40 40" width={40} height={40}>
@@ -22,9 +30,9 @@ const CreateBeaconForm = ({ isOpen, onClose }) => {
     }}
     >
       <div className="text-popups-container">
-        <p className="text-popups-text">
-        Form
-        </p>
+        <div className="text-popups-text">
+          <FormContent onSubmit={onSubmit} />
+        </div>
       </div>
     </Modal>
   );
