@@ -27,6 +27,7 @@ const Header = ({ modalState, setModalState }) => {
         <img src={beaconEllipse} alt="beacon" className="beacon-image" />
         <h1 className="header-title">Light A Beacon</h1>
 
+        <div className="header-popup-button-container">
         <button
           type="button"
           onClick={toggleAboutModal}
@@ -34,7 +35,9 @@ const Header = ({ modalState, setModalState }) => {
         >
           About
         </button>
+        </div>
 
+        <div className="header-popup-button-container">
         <button
           type="button"
           onClick={toggleGuidanceModal}
@@ -42,6 +45,7 @@ const Header = ({ modalState, setModalState }) => {
         >
           Guidance
         </button>
+        </div>
 
         <AboutPopup isOpen={aboutOpen} onClose={toggleAboutModal} />
         <GuidancePopup isOpen={guidanceOpen} onClose={toggleGuidanceModal} />

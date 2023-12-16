@@ -39,7 +39,9 @@ const CreateBeaconForm = ({
     beaconDescription: z
       .string()
       .nonempty({ message: "Beacon description is required" }),
-    beaconUrl: z.string(),
+    beaconUrl: z.string()
+      .url({ message: "Invalid URL" })
+      .optional(),
   });
 
   const { register, handleSubmit, formState, reset } = useForm({

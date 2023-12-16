@@ -4,7 +4,7 @@
     justify-content: start;
     gap: 20px;
     align-items: center;
-    background-color: rgb(190, 195, 198);
+    background-color: rgb(69, 70, 70);
     padding: 0 20px;
     height: 12vh;
     width: 100%;
@@ -18,7 +18,7 @@
 .header-container .header-title {
     font-size: 2rem;
     font-weight: 500;
-    color: #D61D4D;
+    color: hsl(10, 86%, 62%);
     text-transform: uppercase;
 }
 
@@ -27,3 +27,25 @@
     height: 18vh;
     padding-top: 4px;
 }
+
+.header-popup-button-container {
+width: 120px;
+height: 60px;
+    background-image: linear-gradient(
+        180deg,
+        hsl(307deg 71% 19%) 0%,
+        hsl(337deg 100% 27%) 33%,
+        hsl(10deg 71% 40%) 67%,
+        hsl(30deg 100% 40%) 100%
+    );
+    z-index: 5;
+}
+
+.header-popup-button {
+    z-index: 6;
+    background-color: rgb(69, 70, 70);
+    color: rgb(243, 243, 240);
+    width: 95%;
+    height: 95%;
+}
+
