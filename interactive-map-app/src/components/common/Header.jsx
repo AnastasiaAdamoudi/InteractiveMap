@@ -22,12 +22,21 @@ const Header = ({ modalState, setModalState }) => {
   };
 
   return (
-    <>
       <div className="header-container">
+      <div className="left-side-header-container">
         <img src={beaconEllipse} alt="beacon" className="beacon-image" />
-        <h1 className="header-title">Light A Beacon</h1>
 
-        <div className="header-popup-button-container">
+        <div className="header-title-container">
+        <h1 className="header-title">Light A Beacon</h1>
+        <h2 className="header-subtitle">How we light up the world</h2>
+        </div>
+
+        </div>
+
+        <div className="right-side-header-container">
+        <div className="header-popup-button-container"
+        id="about-button"
+        >
         <button
           type="button"
           onClick={toggleAboutModal}
@@ -37,7 +46,9 @@ const Header = ({ modalState, setModalState }) => {
         </button>
         </div>
 
-        <div className="header-popup-button-container">
+        <div className="header-popup-button-container"
+        id="guidance-button"
+        >
         <button
           type="button"
           onClick={toggleGuidanceModal}
@@ -49,9 +60,8 @@ const Header = ({ modalState, setModalState }) => {
 
         <AboutPopup isOpen={aboutOpen} onClose={toggleAboutModal} />
         <GuidancePopup isOpen={guidanceOpen} onClose={toggleGuidanceModal} />
-
+        </div>
       </div>
-    </>
   );
 };
 
