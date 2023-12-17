@@ -1,21 +1,50 @@
 .customOverlay {
-    background: rgba(36, 123, 160, 0.7);
+  background: #247ba0;
+  opacity: 0.7;
   }
 
 .customModal {
-    background: #b2dbbf;
-    max-width: 500px;
+    max-width: 600px;
     width: 100%;
     padding: 20px;
-    background: #fff;
+    background: #bec3c6;
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
   }
 
+  .text-popup-header {
+    font-size: 1.5em;
+    color: #993300;
+    text-transform: uppercase;
+    font-family: 'Catamaran', sans-serif;
+  }
 
-  .text-popups-text {
-    margin-bottom: 20px;
+  .text-popup-title {
+    font-size: 1.3em;
+    color: #660066;
+    font-family: 'Monserrat', sans-serif;
+    margin-top: 40px;
+  }
+
+  .text-popup-paragraph {
+    font-size: 1em;
+    color: #000000;
+    font-family: 'Kumbh Sans', sans-serif;
+  }
+
+  .text-popup {
+    margin-bottom: 40px;
     margin-top: 20px;
-    font-size: 20px;
+  }
+
+  .text-popup-hr {
+    width: 80%;
+  }
+
+  .guidance-popup-paragraph {
+    font-size: 1em;
+    color: #000000;
+    font-family: 'Kumbh Sans', sans-serif;
+    margin-bottom: 40px;
   }

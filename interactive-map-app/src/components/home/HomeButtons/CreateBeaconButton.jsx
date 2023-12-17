@@ -1,4 +1,4 @@
-import { createButton } from '../../../assets/index.js';
+import { pinCandle } from '../../../assets/index.js';
 import { CreateBeaconForm } from '../CreateBeaconForm/index.js';
 import './CreateBeaconButton.css';
 
@@ -14,7 +14,7 @@ const CreateBeaconButton = ({ formOpen, setFormOpen, beacons, updateBeacons, bea
     className="create-beacon-button"
     onClick={toggleForm}
     >
-        <img src={createButton} alt="create-beacon" className="create-beacon-button-img" />
+        <img src={pinCandle} alt="create-beacon" className="create-beacon-button-img" />
         <p className="create-beacon-button-text">Create Beacon</p>
         
     </div>

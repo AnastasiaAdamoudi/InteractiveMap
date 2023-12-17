@@ -5,8 +5,12 @@ import "../HeaderPopups.css";
 const GuidancePopup = ({ isOpen, onClose }) => {
 
   const closeIcon = (
-    <svg fill="#6227a1" viewBox="0 0 40 40" width={40} height={40}>
-      <path d="M 10,10 L 30,30 M 30,10 L 10,30" stroke="purple" strokeWidth="2" />
+    <svg fill="#660066" viewBox="0 0 20 20" width={28} height={28}>
+      <path
+        fillRule="evenodd"
+        d="M4,4 L16,16 M4,16 L16,4" stroke="#660066" strokeWidth="3"
+        clipRule="evenodd"
+      ></path>
     </svg>
   );
 
@@ -22,10 +26,40 @@ const GuidancePopup = ({ isOpen, onClose }) => {
     }}
     >
       <div className="text-popups-container">
-        <p className="text-popups-text">
-        Guidance
-        </p>
-      </div>
+
+<h1 className="text-popup-header">How to set up a Beacon</h1>
+
+  <div className="text-popup">
+
+  <hr className="text-popup-hr" />
+
+    <h3 className="text-popup-title">Step 1</h3>
+    <p className="text-popup-paragraph guidance-popup-paragraph">
+    Navigate to <a href="https://www.latlong.net/" target="_blank" rel="noreferrer">latlong.net</a> and enter the location of your Beacon in the search bar.
+    </p>
+    <hr className="text-popup-hr" />
+    <h3 className="text-popup-title">Step 2</h3>
+    <p className="text-popup-paragraph guidance-popup-paragraph">
+    Click on each of the coordinates (Latitude and Longitude) and copy them to your clipboard.
+    </p>
+    <hr className="text-popup-hr" />
+    <h3 className="text-popup-title">Step 3</h3>
+    <p className="text-popup-paragraph guidance-popup-paragraph">
+      Return to the Light A Beacon website and click on the "Create Beacon" button in the right bottom corner of the screen.
+    </p>
+    <hr className="text-popup-hr" />
+    <h3 className="text-popup-title">Step 4</h3>
+    <p className="text-popup-paragraph guidance-popup-paragraph">
+      Paste the coordinates into the Latitude and Longitude fields, and complete the rest of the form.
+    </p>
+    <hr className="text-popup-hr" />
+    <h3 className="text-popup-title">Step 5</h3>
+    <p className="text-popup-paragraph guidance-popup-paragraph">
+      Click on the "Create Beacon" button. Your Beacon will now be visible on the map.
+    </p>
+  </div>
+
+</div>
     </Modal>
   );
 };
