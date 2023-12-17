@@ -19,8 +19,6 @@
     );
     cursor: pointer;
     box-shadow: 0px 5px 5px 0 rgba(0, 0, 0, 0.5);
-    font-family: "Montserrat", sans-serif;
-    font-weight: bold;
 }
 
 .create-beacon-button {
@@ -44,10 +42,12 @@
     margin-bottom: 0;
 }
 
-.create-beacon-button-container .create-beacon-text {
+.create-beacon-button-container .create-beacon-button-text {
     font-size: 1.2rem;
     font-weight: bold;
     margin-top: 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
 }
 
 .create-beacon-button:hover {
@@ -63,7 +63,7 @@
 }
 
 .create-beacon-button:active {
-    background-color: hsl(307deg 71% 19%);
+    background-color: #660066;
     background-image: none;
     color: #ffffff;
     border: none;

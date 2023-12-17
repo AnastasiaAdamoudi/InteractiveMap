@@ -15,7 +15,7 @@ const CreateBeaconButton = ({ formOpen, setFormOpen, beacons, updateBeacons, bea
     onClick={toggleForm}
     >
         <img src={pinCandle} alt="create-beacon" className="create-beacon-button-img" />
-        <p className="create-beacon-button-text">Create Beacon</p>
+        <p className="create-beacon-button-text">Add Beacon</p>
         
     </div>
   

@@ -1,20 +1,26 @@
 .customOverlay {
-    background: rgba(36, 123, 160, 0.7);
+    background: rgba(170, 211, 223, 0.8);
   }
 
 .customModal {
     max-width: 600px;
     width: 100%;
     padding: 20px;
-    background: #fff;
+    background: #f2efe9;
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
   }
 
 
-  .text-popups-text {
+  .form-content {
     margin-bottom: 20px;
     margin-top: 20px;
-    font-size: 20px;
+  }
+
+  .form-label {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: 'Monsterrat', sans-serif;
   }

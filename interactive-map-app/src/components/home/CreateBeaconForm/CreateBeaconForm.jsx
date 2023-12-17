@@ -13,13 +13,14 @@ const CreateBeaconForm = ({
   updateBeacons,
   beaconArrayLength,
 }) => {
+
   const closeIcon = (
-    <svg fill="#6227a1" viewBox="0 0 40 40" width={40} height={40}>
+    <svg fill="#660066" viewBox="0 0 20 20" width={28} height={28}>
       <path
-        d="M 10,10 L 30,30 M 30,10 L 10,30"
-        stroke="purple"
-        strokeWidth="3"
-      />
+        fillRule="evenodd"
+        d="M4,4 L16,16 M4,16 L16,4" stroke="#660066" strokeWidth="3"
+        clipRule="evenodd"
+      ></path>
     </svg>
   );
 
@@ -103,11 +104,11 @@ const CreateBeaconForm = ({
         modal: "customModal",
       }}
     >
-      <div className="text-popups-container">
-        <div className="text-popups-text">
+      <div className="form-container">
+        <div className="form-content">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-group">
-              <label htmlFor="creatorName">Creator Name</label>
+              <label htmlFor="creatorName" className="form-label">Creator Name</label>
               <input
                 {...register("creatorName", { required: true })}
                 type="text"
@@ -119,7 +120,7 @@ const CreateBeaconForm = ({
             </div>
 
             <div className="form-group">
-              <label htmlFor="creatorEmail">Creator Email</label>
+              <label htmlFor="creatorEmail" className="form-label">Creator Email</label>
               <input
                 {...register("creatorEmail", { required: true })}
                 type="email"
@@ -133,7 +134,7 @@ const CreateBeaconForm = ({
             </div>
 
             <div className="form-group">
-              <label htmlFor="beaconName">Beacon Name</label>
+              <label htmlFor="beaconName" className="form-label">Beacon Name</label>
               <input
                 {...register("beaconName", { required: true })}
                 type="text"
@@ -145,7 +146,7 @@ const CreateBeaconForm = ({
             </div>
 
             <div className="form-group">
-              <label htmlFor="beaconLocation">Beacon Location</label>
+              <label htmlFor="beaconLocation" className="form-label">Beacon Location</label>
               <input
                 {...register("beaconLocation", { required: true })}
                 type="text"
@@ -159,7 +160,7 @@ const CreateBeaconForm = ({
             </div>
 
             <div className="form-group">
-              <label htmlFor="beaconDescription">Beacon Description</label>
+              <label htmlFor="beaconDescription" className="form-label">Beacon Description</label>
               <input
                 {...register("beaconDescription", { required: true })}
                 type="text"
@@ -173,7 +174,7 @@ const CreateBeaconForm = ({
             </div>
 
             <div className="form-group">
-              <label htmlFor="beaconLatitude">Beacon Latitude</label>
+              <label htmlFor="beaconLatitude" className="form-label">Beacon Latitude</label>
               <input
                 {...register("beaconLatitude", { required: true })}
                 type="number"
@@ -188,7 +189,7 @@ const CreateBeaconForm = ({
             </div>
 
             <div className="form-group">
-              <label htmlFor="beaconLongitude">Beacon Longitude</label>
+              <label htmlFor="beaconLongitude" className="form-label">Beacon Longitude</label>
               <input
                 {...register("beaconLongitude", { required: true })}
                 type="number"
@@ -203,7 +204,7 @@ const CreateBeaconForm = ({
             </div>
 
             <div className="form-group">
-              <label htmlFor="beaconUrl">Beacon URL</label>
+              <label htmlFor="beaconUrl" className="form-label">Beacon URL</label>
               <input
                 {...register("beaconUrl")}
                 type="text"
@@ -215,7 +216,7 @@ const CreateBeaconForm = ({
             </div>
 
             <button type="submit" className="btn btn-primary">
-              Submit
+              Create Beacon
             </button>
           </form>
         </div>
