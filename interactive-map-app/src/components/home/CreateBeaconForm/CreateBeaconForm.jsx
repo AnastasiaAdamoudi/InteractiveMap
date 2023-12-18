@@ -1,7 +1,7 @@
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import "./CreateBeaconForm.css";
-import axios from "axios";
+// import axios from "axios";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";

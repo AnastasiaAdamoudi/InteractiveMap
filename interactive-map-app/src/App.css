@@ -12,3 +12,24 @@
   --land: #f2efe9;
   --background: #bec3c6;
 }
+
+/* Extra Small devices (phones, 350px and down) */
+@media only screen and (max-width: 350px) {
+}
+
+/* Small devices (phones, 540px and down) */
+@media only screen and (max-width: 540px) {
+}
+
+/* Medium devices (tablets, 768px and down) */
+@media only screen and (max-width: 768px) {
+}
+
+/* Large devices (desktops, 1024px and down) */
+@media only screen and (max-width: 1024px) {
+}
+
+/* Extra Large devices (large desktops, 1280px and down) */
+@media only screen and (max-width: 1280px) {
+}
+
