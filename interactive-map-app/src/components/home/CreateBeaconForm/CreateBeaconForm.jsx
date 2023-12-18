@@ -116,7 +116,7 @@ const CreateBeaconForm = ({
                 id="name"
                 placeholder="Enter your name"
               />
-              <div style={{ color: "red" }}>{errors?.creatorName?.message}</div>
+              <div className="error-message">{errors?.creatorName?.message}</div>
             </div>
 
             <div className="form-group">
@@ -128,7 +128,7 @@ const CreateBeaconForm = ({
                 id="email"
                 placeholder="Enter your email"
               />
-              <div style={{ color: "red" }}>
+              <div className="error-message">
                 {errors?.creatorEmail?.message}
               </div>
             </div>
@@ -142,7 +142,7 @@ const CreateBeaconForm = ({
                 id="beaconName"
                 placeholder="Enter beacon name"
               />
-              <div style={{ color: "red" }}>{errors?.beaconName?.message}</div>
+              <div className="error-message">{errors?.beaconName?.message}</div>
             </div>
 
             <div className="form-group">
@@ -154,21 +154,24 @@ const CreateBeaconForm = ({
                 id="beaconLocation"
                 placeholder="Enter beacon location"
               />
-              <div style={{ color: "red" }}>
+              <div className="error-message">
                 {errors?.beaconLocation?.message}
               </div>
             </div>
 
             <div className="form-group">
               <label htmlFor="beaconDescription" className="form-label">Beacon Description</label>
-              <input
-                {...register("beaconDescription", { required: true })}
-                type="text"
-                className="form-control"
-                id="beaconDescription"
-                placeholder="Enter beacon description"
-              />
-              <div style={{ color: "red" }}>
+              <textarea
+  {...register("beaconDescription", { required: true })}
+  className="form-control"
+  id="beaconDescription"
+  placeholder="Enter beacon description"
+></textarea>
+<div className="error-message">
+  {errors?.beaconDescription?.message}
+</div>
+
+              <div className="error-message">
                 {errors?.beaconDescription?.message}
               </div>
             </div>
@@ -183,7 +186,7 @@ const CreateBeaconForm = ({
                 id="beaconLatitude"
                 placeholder="Enter beacon latitude"
               />
-              <div style={{ color: "red" }}>
+              <div className="error-message">
                 {errors?.beaconLatitude?.message}
               </div>
             </div>
@@ -198,7 +201,7 @@ const CreateBeaconForm = ({
                 id="beaconLongitude"
                 placeholder="Enter beacon longitude"
               />
-              <div style={{ color: "red" }}>
+              <div className="error-message">
                 {errors?.beaconLongitude?.message}
               </div>
             </div>
@@ -212,7 +215,7 @@ const CreateBeaconForm = ({
                 id="beaconUrl"
                 placeholder="Enter beacon URL"
               />
-              <div style={{ color: "red" }}>{errors?.beaconUrl?.message}</div>
+              <div className="error-message">{errors?.beaconUrl?.message}</div>
             </div>
 
             <div className="submit-button-container">

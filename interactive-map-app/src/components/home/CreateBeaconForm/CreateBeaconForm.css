@@ -1,103 +1,109 @@
 .customOverlay {
-    background: rgba(170, 211, 223, 0.8);
-  }
-
-.customModal {
-    max-width: 600px;
-    width: 100%;
-    padding: 20px;
-    margin-left: 0;
-    margin-right: 0;
-    background: #f2efe9;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
-  }
-
-
-  .form-content {
-    padding: 20px;
-    justify-content: start;
-    align-items: center;
-    width: 90%;
-    margin: 0 auto;
-  }
-
-  .form-label {
-    font-size: 1.1em;
-    font-weight: bold;
-    margin: 20px 10px;
-    font-family: 'Monsterrat', sans-serif;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-  }
-
-  .form-control {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #fff;
-    margin: 10px 20px 10px 0;
-    box-sizing: border-box;
-    font-size: 0.9em;
-    font-family: 'Kumbh Sans', sans-serif;
-  }
-
-  .form-group {
-    display: flex;
-    align-items: center;
-    margin: 10px auto;
-    height: 50px;
-    width: 500px;
-  }
-
-  .submit-button-container {
-    display: flex;
-    align-items: center; 
-    background-image: linear-gradient(
-        180deg,
-        hsl(307deg 71% 19%) 0%,
-        hsl(337deg 100% 27%) 33%,
-        hsl(10deg 71% 40%) 67%,
-        hsl(30deg 100% 40%) 100%
-    );
-    border-radius: 50%;
-    height: 10vh;
-    width: 22vh;
-    cursor: pointer;
-    margin: 30px auto 0 auto;
+  background: var(--sea);
 }
 
+.customModal {
+  max-width: 500px;
+  width: 100%;
+  padding: 20px;
+  margin-left: 0;
+  margin-right: 0;
+  background: var(--land);
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.form-content {
+  padding: 10px 20px;
+  justify-content: start;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.form-label {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin: 20px auto 10px auto;
+  font-family: 'Monsterrat', sans-serif;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #fff;
+  margin: 10px 0; /* Adjusted margin */
+  box-sizing: border-box;
+  font-size: 0.9em;
+  font-family: 'Kumbh Sans', sans-serif;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column; /* Adjusted flex direction */
+  align-items: start; /* Adjusted alignment */
+  margin: 10px auto;
+}
+
+.submit-button-container {
+  display: flex;
+  align-items: center;
+  background-image: linear-gradient(
+      180deg,
+      hsl(307deg 71% 19%) 0%,
+      hsl(337deg 100% 27%) 33%,
+      hsl(10deg 71% 40%) 67%,
+      hsl(30deg 100% 40%) 100%
+  );
+  border-radius: 50%;
+  height: 10vh;
+  width: 22vh;
+  cursor: pointer;
+  margin: 30px auto 0 auto;
+}
 
 .submit-button {
-    background-color: rgb(195, 197, 197);
-    color: #660066;
-    height: 9vh;
-    width: 21vh;
-    border-radius: 50%;
-    font-size: 1.1rem;
-    margin: 2%;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
+  background-color: var(--background);
+  color: var(--dusk);
+  height: 9vh;
+  width: 21vh;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  margin: 2%;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
 }
 
 .submit-button:hover {
-    background-image: linear-gradient(
-        180deg,
-        hsl(307deg 71% 19%) 0%,
-        hsl(337deg 100% 27%) 33%,
-        hsl(10deg 71% 40%) 67%,
-        hsl(30deg 100% 40%) 100%
-    );
-    color: #ffffff;
-    border: none;
+  background-image: linear-gradient(
+      180deg,
+      hsl(307deg 71% 19%) 0%,
+      hsl(337deg 100% 27%) 33%,
+      hsl(10deg 71% 40%) 67%,
+      hsl(30deg 100% 40%) 100%
+  );
+  color: #ffffff;
+  border: none;
 }
 
 .submit-button:active {
-    background-color: #660066;
-    background-image: none;
-    color: #ffffff;
-    border: none;
+  background-color: var(--dusk);
+  background-image: none;
+  color: #ffffff;
+  border: none;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8em;
+  font-family: 'Kumbh Sans', sans-serif;
+  margin: 5px 0; /* Adjusted margin */
+  width: 90%;
+  text-align: left;
 }

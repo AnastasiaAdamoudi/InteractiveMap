@@ -3,3 +3,12 @@
   padding: 2rem;
   text-align: center;
 }
+
+:root {
+  --text: #000000; 
+  --dusk: #660066;
+  --sunset: #993300;
+  --sea: rgba(170, 211, 223, 0.8);
+  --land: #f2efe9;
+  --background: #bec3c6;
+}

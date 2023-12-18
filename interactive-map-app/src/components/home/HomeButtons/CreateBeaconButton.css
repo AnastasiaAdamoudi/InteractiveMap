@@ -26,8 +26,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;    
-    background-color: #bec3c6;
-    color: #660066;
+    background-color: var(--background);
+    color: var(--dusk);
     border-radius: 50%;
     height: 25vh;
     width: 15vh;
@@ -63,7 +63,7 @@
 }
 
 .create-beacon-button:active {
-    background-color: #660066;
+    background-color: var(--dusk);
     background-image: none;
     color: #ffffff;
     border: none;
