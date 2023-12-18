@@ -215,9 +215,11 @@ const CreateBeaconForm = ({
               <div style={{ color: "red" }}>{errors?.beaconUrl?.message}</div>
             </div>
 
-            <button type="submit" className="btn btn-primary">
+            <div className="submit-button-container">
+            <button type="submit" className="submit-button">
               Create Beacon
             </button>
+            </div>
           </form>
         </div>
       </div>
