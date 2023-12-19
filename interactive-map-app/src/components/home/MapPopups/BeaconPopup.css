@@ -16,7 +16,7 @@
   font-size: 1.3em;
   color: var(--dusk);
   font-family: 'Monserrat', sans-serif;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .beacon-popup-subtitle {
@@ -24,7 +24,7 @@
   color: var(--text);
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 .beacon-popup-paragraph {
