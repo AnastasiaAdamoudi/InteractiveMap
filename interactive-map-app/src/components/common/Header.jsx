@@ -39,21 +39,21 @@ const Header = ({ modalState, setModalState, burgerMenuOpen, setBurgerMenuOpen }
 
       <div className="right-side-header-container">
         <div className="burger-menu" onClick={toggleBurgerMenu}>
-          <div className="bar"></div>
-          <div className="bar"></div>
-          <div className="bar"></div>
+          <div className="bar" id="bar1"></div>
+          <div className="bar" id="bar2"></div>
+          <div className="bar" id="bar3"></div>
         </div>
 
         {/* Burger menu content */}
         {burgerMenuOpen && (
           <div className="burger-menu-content">
-            <button type="button" onClick={toggleAboutModal} className="burger-menu-link">
+            <div onClick={toggleAboutModal} className="burger-menu-link">
               About
-            </button>
+            </div>
             <br />
-            <button type="button" onClick={toggleGuidanceModal} className="burger-menu-link">
+            <div type="button" onClick={toggleGuidanceModal} className="burger-menu-link">
               Guidance
-            </button>
+            </div>
           </div>
         )}
 
