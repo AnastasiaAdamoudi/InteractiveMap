@@ -7,24 +7,24 @@ import { beaconsData } from './data/beaconsData';
 
 function App() {
 
+  const [burgerMenuOpen, setBurgerMenuOpen] = useState(false);
   const [modalState, setModalState] = useState({
     aboutOpen: false,
     guidanceOpen: false,
   });
+  const [formOpen, setFormOpen] = useState(false);
+  const [beacons, setBeacons] = useState(beaconsData);
 
   const closeModal = () => {
     setModalState({
       aboutOpen: false,
       guidanceOpen: false,
     });
-  };
+  };  
 
-  const [formOpen, setFormOpen] = useState(false);
   const closeForm = () => {
     setFormOpen(false);
   };
-
-  const [beacons, setBeacons] = useState(beaconsData);
 
   const beaconArrayLength = beacons.length;
 
@@ -35,9 +35,11 @@ function App() {
   return (
     <Router>
     <div>
-      <Header modalState={modalState} setModalState={setModalState} closeModal={closeModal} />
+      <Header modalState={modalState} setModalState={setModalState} closeModal={closeModal} burgerMenuOpen={burgerMenuOpen} setBurgerMenuOpen={setBurgerMenuOpen} />
       <Routes>
-        <Route path="/" element={<Home formOpen={formOpen} setFormOpen={setFormOpen} closeForm={closeForm} beacons={beacons} updateBeacons={updateBeacons} beaconArrayLength={beaconArrayLength} />} />
+        <Route path="/" element={<Home formOpen={formOpen} setFormOpen={setFormOpen} closeForm={closeForm} 
+        beacons={beacons} updateBeacons={updateBeacons} beaconArrayLength={beaconArrayLength} 
+       />} />
       </Routes>
       <Footer />
     </div>

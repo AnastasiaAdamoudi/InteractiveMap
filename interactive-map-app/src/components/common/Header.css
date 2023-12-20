@@ -74,6 +74,11 @@
     cursor: pointer;
 }
 
+.header-popup-button,
+.header-popup-button:hover,
+.header-popup-button:active {
+    transition: background-color 0.3s, color 0.3s, border 0.3s;
+}
 
 .header-popup-button {
     background-color: var(--background);
@@ -112,4 +117,69 @@
 
 #guidance-button {
     margin-right: 40px;
+}
+
+.burger-menu {
+    display: none;
+    cursor: pointer;
+    transition: background-color 0.4s; /* Simplified for debugging */
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--dusk);
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+/* .burger-menu.open .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.burger-menu.open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-menu.open .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+} */
+
+/* Simplified transition for debugging */
+.burger-menu.open {
+    background-color: red; /* Change color for testing */
+}
+
+.burger-menu-content {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: var(--background);
+    border: 1px solid var(--dusk);
+    border-radius: 4px;
+}
+
+@media only screen and (max-width: 768px) {
+    .burger-menu {
+        display: block;
+        margin-right: 20px; /* Adjust the margin as needed */
+    }
+
+    .header-popup-button-container {
+        display: none;
+    }
+
+    .header-title {
+        font-size: 1.8rem;
+    }
+
+    .header-subtitle {
+        font-size: 1rem;
+    }
+
+    .header-popup-button {
+        font-size: 1rem;
+    }
 }
