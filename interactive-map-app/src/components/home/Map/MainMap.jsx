@@ -1,6 +1,5 @@
-// import { useState, useEffect } from "react";
-// import axios from "axios";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { useEffect } from "react";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import "./MainMap.css";
@@ -9,19 +8,6 @@ import { pinCandle, pinShadow } from '../../../assets/index.js';
 import { beaconsData } from "../../../data/beaconsData.js";
 
 const MainMap = ({beacons}) => {
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get('DRUPAL_BEACONS_API_ENDPOINT'); // This is the endpoint of the Drupal view that returns the beacons data in JSON format
-  //       setBeacons(response.data);
-  //     } catch (error) {
-  //       console.error('Error fetching beacon data:', error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, [beacons]);
 
   const customMarker = new L.icon({
     iconUrl: pinCandle,

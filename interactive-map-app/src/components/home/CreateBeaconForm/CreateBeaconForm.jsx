@@ -66,7 +66,7 @@ const CreateBeaconForm = ({
   const onSubmit = async (formData) => {
     try {
       const newBeacon = {
-        number: beaconArrayLength + 1,
+        number: beaconArrayLength > 0 ? beaconArrayLength + 1 : 1,
         creatorName: formData.creatorName,
         creatorEmail: formData.creatorEmail,
         createdOn: formattedDate,
@@ -82,7 +82,7 @@ const CreateBeaconForm = ({
       console.log("Form data: ", formData);
       console.log("New beacon created: ", newBeacon);
 
-      // await axios.post('/api/update-beacons-data', newBeacon);
+      // await axios.post('API_ENDPOINT_ADD_BEACON', newBeacon);
 
       updateBeacons(newBeacon);
 

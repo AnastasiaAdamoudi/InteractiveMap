@@ -17,6 +17,7 @@
     color: var(--sunset);
     text-transform: uppercase;
     font-family: 'Catamaran', sans-serif;
+    margin-top: 50px;
   }
 
   .text-popup-title {

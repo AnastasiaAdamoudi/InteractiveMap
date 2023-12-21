@@ -21,6 +21,30 @@
     box-shadow: 0px 5px 5px 0 rgba(0, 0, 0, 0.5);
 }
 
+@media (max-width: 768px) {
+    .create-beacon-button-container {
+        height: 21vh !important;
+        width: 13vh !important;
+        right: 3vh !important;
+        bottom: 3vh !important;
+        padding: 3px !important;
+    }
+
+    .create-beacon-button-img {
+        width: 9vh !important;
+        margin-bottom: 5px !important;
+    }
+
+    .create-beacon-button-text {
+        font-size: 1rem !important;
+    }
+
+    .create-beacon-button {
+        height: 21vh !important;
+        width: 13vh !important;
+    }
+}
+
 .create-beacon-button {
     display: flex;
     flex-direction: column;
