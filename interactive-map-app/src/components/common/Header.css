@@ -33,14 +33,14 @@
     font-size: 2.2rem;
     color: var(--sunset);
     text-transform: uppercase;
-    margin-bottom: 0%;
+    margin-bottom: 0;
     font-family: 'Catamaran', sans-serif !important;
 }
 
 .header-subtitle {
     font-size: 1.1rem;
     color: var(--dusk);
-    margin-top: 2px;
+    margin-top: 0;
 }
 
 .header-title-container {
@@ -50,7 +50,6 @@
     justify-content: center;
     align-items: center;
     margin-left: 20px;
-    padding-top: 2%;
 }
 
 .header-container .beacon-image {
