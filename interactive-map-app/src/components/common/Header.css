@@ -52,10 +52,11 @@
     margin-left: 20px;
 }
 
-.header-container .beacon-image {
+.beacon-image {
     width: auto;
     height: 18vh;
     align-self: center;
+    margin-top: 2px;
 }
 
 .header-popup-button-container {
