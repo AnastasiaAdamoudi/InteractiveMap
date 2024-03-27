@@ -2,27 +2,44 @@ import mongoose, { model } from 'mongoose';
 
 const { Schema } = mongoose;
 
-const beaconsSchema = new Schema({
-    name: {
+const beaconSchema = new Schema({
+    creatorName: {
         type: String,
         required: true,
         minlength: 2,
     },
-    email: {
+    creatorEmail: {
         type: String,
         required: true,
-        unique: true,
         minlength: 8,
-        validate: {
-            validator: async function(value) {
-                // Check if the email address is already in use
-                const existingEmail = await this.constructor.findOne({ email: value });
-                return !existingEmail; // Return false if the email already exists
-            },
-            message: "Email address must be unique" // Custom error message
-        }
+    },
+    beaconName: {
+        type: String,
+        required: true,
+        minlength: 2,
+    },
+    beaconLocation: {
+        type: String,
+        required: true,
+        minlength: 2,
+    },
+    beaconLatitude: {
+        type: Number,
+        required: true,
+    },
+    beaconLongitude: {
+        type: Number,
+        required: true,
+    },
+    beaconDescription: {
+        type: String,
+        required: true,
+        minlength: 10,
+    },
+    createdOn: {
+        type: Date,
+        default: Date.now
     }
-
 });
 
-export const BeaconsModel = model('beacons', beaconsSchema);
+export const BeaconModel = model('Beacon', beaconSchema);
