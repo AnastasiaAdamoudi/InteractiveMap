@@ -1,13 +1,16 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import { useEffect } from "react";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import "./MainMap.css";
 import { BeaconPopup } from '../MapPopups/index.js';
 import { pinCandle, pinShadow } from '../../../assets/index.js';
-import { beaconsData } from "../../../data/beaconsData.js";
+import PropTypes from 'prop-types';
 
-const MainMap = ({beacons}) => {
+const MainMap = ({ beacons }) => {
+
+MainMap.propTypes = {
+  beacons: PropTypes.array.isRequired
+};
 
   const customMarker = new L.icon({
     iconUrl: pinCandle,
@@ -30,7 +33,7 @@ const MainMap = ({beacons}) => {
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
-        {beaconsData.map((beacon, index) => (
+        {beacons.map((beacon, index) => (
           <Marker
             key={index}
             position={[beacon.beaconLatitude, beacon.beaconLongitude]}

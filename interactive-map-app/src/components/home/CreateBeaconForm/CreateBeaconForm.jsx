@@ -1,7 +1,7 @@
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import "./CreateBeaconForm.css";
-// import axios from "axios";
+import axios from "axios";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -27,7 +27,7 @@ const CreateBeaconForm = ({
 
   const schema = z.object({
     creatorName: z.string().nonempty({ message: "Creator name is required" }),
-    creatorEmail: z.string().email({ message: "Invalid email address" }),
+    creatorEmail: z.string().email({ message: "Invalid email address" }).nonempty({ message: "Creator email is required" }),
     beaconName: z.string().nonempty({ message: "Beacon name is required" }),
     beaconLocation: z
       .string()
@@ -66,14 +66,14 @@ const CreateBeaconForm = ({
   const onSubmit = async (formData) => {
     try {
       const newBeacon = {
-        number: beaconArrayLength > 0 ? beaconArrayLength + 1 : 1,
+        // number: beaconArrayLength > 0 ? beaconArrayLength + 1 : 1,
         creatorName: formData.creatorName,
         creatorEmail: formData.creatorEmail,
         createdOn: formattedDate,
         beaconName: formData.beaconName,
         beaconLocation: formData.beaconLocation,
-        beaconLatitude: parseFloat(formData.beaconLatitude),
-        beaconLongitude: parseFloat(formData.beaconLongitude),
+        beaconLatitude: formData.beaconLatitude,
+        beaconLongitude: formData.beaconLongitude,
         beaconDescription: formData.beaconDescription,
         // beaconUrl: formData.beaconUrl,
       };
@@ -82,9 +82,7 @@ const CreateBeaconForm = ({
       console.log("Form data: ", formData);
       console.log("New beacon created: ", newBeacon);
 
-      // await axios.post('API_ENDPOINT_ADD_BEACON', newBeacon);
-
-      updateBeacons(newBeacon);
+      // updateBeacons(newBeacon);
 
       reset({
         creatorName: "",
@@ -96,6 +94,10 @@ const CreateBeaconForm = ({
         beaconDescription: "",
         // beaconUrl: "",
       });
+
+      const response = await axios.post("http://localhost:3000/beacons", newBeacon);
+
+      console.log("This is the response sent to the server: ", response.data);
 
       onClose();
     } catch (err) {

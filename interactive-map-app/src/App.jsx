@@ -4,7 +4,6 @@ import axios from "axios";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Header, Footer } from './components/common/index.js';
 import Home from './pages/Home';
-import { beaconsData } from "./data/beaconsData.js";
 
 function App() {
 
@@ -14,35 +13,19 @@ function App() {
     guidanceOpen: false,
   });
   const [formOpen, setFormOpen] = useState(false);
-  const [beacons, setBeacons] = useState(beaconsData);
+  const [beacons, setBeacons] = useState([]);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get('API_ENDPOINT_GET_BEACONS');
-  //       setBeacons(response.data);
-  //     } catch (error) {
-  //       console.error('Error fetching beacon data:', error);
-  //     }
-  //   };
-  
-  //   fetchData();
-  // }, []); // Empty dependency array for initial fetch
-
-  const beaconArrayLength = beaconsData.length;
-
-  // useEffect(() => {
-  //   const getUpdatedBeacons = async () => {
-  //     try {
-  //       const response = await axios.get('API_ENDPOINT_GET_BEACONS');
-  //       setBeacons(response.data);
-  //     } catch (error) {
-  //       console.error('Error fetching beacon data:', error);
-  //     }
-  //   }
-  //   getUpdatedBeacons();
-  // }
-  // , [beaconArrayLength]); // Dependency array for subsequent fetches when beacons array length changes
+  useEffect(() => {
+    const getBeaconsData = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/beacons');
+        setBeacons(response.data);
+      } catch (error) {
+        console.error('Error fetching beacon data:', error);
+      }
+    }  
+    getBeaconsData();
+  }, [beacons]);
 
   const updateBeacons = (newBeacon) => {
     setBeacons([...beacons, newBeacon]);
@@ -65,7 +48,7 @@ function App() {
       <Header modalState={modalState} setModalState={setModalState} closeModal={closeModal} burgerMenuOpen={burgerMenuOpen} setBurgerMenuOpen={setBurgerMenuOpen} />
       <Routes>
         <Route path="/" element={<Home formOpen={formOpen} setFormOpen={setFormOpen} closeForm={closeForm} 
-        beacons={beacons} updateBeacons={updateBeacons} beaconArrayLength={beaconArrayLength} 
+        beacons={beacons} updateBeacons={updateBeacons}
        />} />
       </Routes>
       <Footer />

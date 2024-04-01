@@ -12,6 +12,13 @@ const beaconSchema = new Schema({
         type: String,
         required: true,
         minlength: 8,
+        validate: {
+            // Check if it's an email address
+            validator: function(value) {
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+            },
+            message: "Email address must be valid"
+        }
     },
     beaconName: {
         type: String,
@@ -42,4 +49,4 @@ const beaconSchema = new Schema({
     }
 });
 
-export const BeaconModel = model('Beacon', beaconSchema);
+export const BeaconModel = model('beacons', beaconSchema);
