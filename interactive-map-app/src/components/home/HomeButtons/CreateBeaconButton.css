@@ -5,7 +5,7 @@
     align-items: center;
     position: fixed;
     right: 5vh;
-    bottom: 5vh;
+    bottom: 80px;
     border-radius: 50%;
     height: 26vh;
     width: 16vh;
@@ -26,7 +26,7 @@
         height: 21vh !important;
         width: 13vh !important;
         right: 3vh !important;
-        bottom: 3vh !important;
+        bottom: 140px !important;
         padding: 3px !important;
     }
 

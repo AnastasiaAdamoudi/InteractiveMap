@@ -12,6 +12,10 @@ function App() {
     aboutOpen: false,
     guidanceOpen: false,
   });
+  const [footerModals, setFooterModals] = useState({
+    privacyOpen: false,
+    accessibilityOpen: false,
+  });
   const [formOpen, setFormOpen] = useState(false);
   const [beacons, setBeacons] = useState([]);
 
@@ -38,6 +42,13 @@ function App() {
     });
   };  
 
+  const closeFooterModals = () => {
+    setFooterModals({
+      privacyOpen: false,
+      accessibilityOpen: false,
+    });
+  };
+
   const closeForm = () => {
     setFormOpen(false);
   };
@@ -51,7 +62,7 @@ function App() {
         beacons={beacons} updateBeacons={updateBeacons}
        />} />
       </Routes>
-      <Footer />
+      <Footer footerModals={footerModals} setFooterModals={setFooterModals} closeFooterModals={closeFooterModals} />
     </div>
   </Router>
   )

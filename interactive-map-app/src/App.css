@@ -27,3 +27,19 @@
 @media only screen and (max-width: 1280px) {
 }
 
+.text-link {
+  color: var(--dusk);
+  border: none;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.text-link:hover {
+  color: var(--sunset);
+}
+
+.text-link:active {
+  color: var(--sunset);
+}

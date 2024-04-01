@@ -35,7 +35,7 @@ const GuidancePopup = ({ isOpen, onClose }) => {
 
     <h3 className="text-popup-title">Step 1</h3>
     <p className="text-popup-paragraph guidance-popup-paragraph">
-    Navigate to <a href="https://www.latlong.net/" target="_blank" rel="noreferrer">latlong.net</a> and enter the location of your Beacon in the search bar.
+    Navigate to <a href="https://www.latlong.net/" target="_blank" rel="noreferrer" className="text-link">latlong.net</a> and enter the location of your Beacon in the search bar.
     </p>
     <hr className="text-popup-hr" />
     <h3 className="text-popup-title">Step 2</h3>
