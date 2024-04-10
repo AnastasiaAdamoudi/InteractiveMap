@@ -40,20 +40,25 @@ const GuidancePopup = ({ isOpen, onClose }) => {
     <hr className="text-popup-hr" />
     <h3 className="text-popup-title">Step 2</h3>
     <p className="text-popup-paragraph guidance-popup-paragraph">
-    Click on each of the coordinates (Latitude and Longitude) and copy them to your clipboard.
+    Select the Latitude copy it to your clipboard (right click and select "Copy" or use the keyboard shortcut Ctrl + C).
     </p>
     <hr className="text-popup-hr" />
     <h3 className="text-popup-title">Step 3</h3>
     <p className="text-popup-paragraph guidance-popup-paragraph">
-      Return to the Light A Beacon website and click on the "Create Beacon" button in the right bottom corner of the screen.
+      Return to the Light A Beacon website and click on the "Add Beacon" button on the right bottom corner of the screen.
     </p>
     <hr className="text-popup-hr" />
     <h3 className="text-popup-title">Step 4</h3>
     <p className="text-popup-paragraph guidance-popup-paragraph">
-      Paste the coordinates into the Latitude and Longitude fields, and complete the rest of the form.
+      Paste the Latitude into the Latitude field (right click and select "Paste" or use the keyboard shortcut Ctrl + V).
     </p>
     <hr className="text-popup-hr" />
     <h3 className="text-popup-title">Step 5</h3>
+    <p className="text-popup-paragraph guidance-popup-paragraph">
+      Repeat steps 2-4 for the Longitude.
+    </p>
+    <hr className="text-popup-hr" />
+    <h3 className="text-popup-title">Step 6</h3>
     <p className="text-popup-paragraph guidance-popup-paragraph">
       Click on the "Create Beacon" button. Your Beacon will now be visible on the map.
     </p>

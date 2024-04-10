@@ -47,8 +47,8 @@ const Footer = ({ footerModals, setFooterModals }) => {
             rel="noreferrer"
             className="text-link"
           >
-            Anastasia Adamoudi
-          </a>
+            Anastasia
+          </a>, Jon & Tim
         </p>
       </div>
 

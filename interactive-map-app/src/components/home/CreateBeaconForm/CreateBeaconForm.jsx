@@ -5,6 +5,9 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import "react-tooltip/dist/react-tooltip.css";
+import { Tooltip } from "react-tooltip";
+import { tooltipIcon } from "../../../assets";
 
 const CreateBeaconForm = ({
   isOpen,
@@ -27,7 +30,10 @@ const CreateBeaconForm = ({
 
   const schema = z.object({
     creatorName: z.string().nonempty({ message: "Creator name is required" }),
-    creatorEmail: z.string().email({ message: "Invalid email address" }).nonempty({ message: "Creator email is required" }),
+    creatorEmail: z
+      .string()
+      .email({ message: "Invalid email address" })
+      .nonempty({ message: "Creator email is required" }),
     beaconName: z.string().nonempty({ message: "Beacon name is required" }),
     beaconLocation: z
       .string()
@@ -54,8 +60,8 @@ const CreateBeaconForm = ({
 
   const formatToDDMMYYYY = (dateString) => {
     const date = new Date(dateString);
-    const day = date.getDate().toString().padStart(2, '0');
-    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Month is zero-based
+    const day = date.getDate().toString().padStart(2, "0");
+    const month = (date.getMonth() + 1).toString().padStart(2, "0"); // Month is zero-based
     const year = date.getFullYear();
     return `${day}/${month}/${year}`;
   };
@@ -95,7 +101,10 @@ const CreateBeaconForm = ({
         // beaconUrl: "",
       });
 
-      const response = await axios.post("http://localhost:3000/beacons", newBeacon);
+      const response = await axios.post(
+        "http://localhost:3000/beacons",
+        newBeacon
+      );
 
       console.log("This is the response sent to the server: ", response.data);
 
@@ -204,9 +213,35 @@ const CreateBeaconForm = ({
             </div>
 
             <div className="form-group">
-              <label htmlFor="beaconLatitude" className="form-label">
-                Beacon Latitude
-              </label>
+              <div className="title-line">
+                <div className="input-title">
+                  <label htmlFor="beaconLatitude" className="form-label">
+                    Beacon Latitude
+                  </label>
+                </div>
+                <div className="tooltip-icon-container">
+                  <a
+                    data-tooltip-id="latitudeTip"
+                    data-tooltip-content={
+                      "Latitude is a geographic coordinate that specifies the north-south position of a point on the Earth's surface. To make sure your Latitude input is the one that shows the north-south position (N/S)."
+                    }
+                    data-tooltip-place="top"
+                    className="tooltip-icon"
+                  >
+                    <img
+                      src={tooltipIcon}
+                      alt="tooltip-icon"
+                      className="tooltip-icon"
+                    />
+                  </a>
+                </div>
+                <Tooltip
+                  id="latitudeTip"
+                  place="top"
+                  effect="solid"
+                  className="tooltip"
+                />
+              </div>
               <input
                 {...register("beaconLatitude", { required: true })}
                 type="number"
@@ -221,9 +256,35 @@ const CreateBeaconForm = ({
             </div>
 
             <div className="form-group">
-              <label htmlFor="beaconLongitude" className="form-label">
-                Beacon Longitude
-              </label>
+              <div className="title-line">
+                <div className="input-title">
+                  <label htmlFor="beaconLongitude" className="form-label">
+                    Beacon Longitude
+                  </label>
+                </div>
+                <div className="tooltip-icon-container">
+                  <a
+                    data-tooltip-id="latitudeTip"
+                    data-tooltip-content={
+                      "Longitude is a geographic coordinate that specifies the east-west position of a point on the Earth's surface. To make sure your Longitude input is the one that shows the east-west position (E/W)."
+                    }
+                    data-tooltip-place="top"
+                    className="tooltip-icon"
+                  >
+                    <img
+                      src={tooltipIcon}
+                      alt="tooltip-icon"
+                      className="tooltip-icon"
+                    />
+                  </a>
+                </div>
+                <Tooltip
+                  id="latitudeTip"
+                  place="top"
+                  effect="solid"
+                  className="tooltip"
+                />
+              </div>
               <input
                 {...register("beaconLongitude", { required: true })}
                 type="number"

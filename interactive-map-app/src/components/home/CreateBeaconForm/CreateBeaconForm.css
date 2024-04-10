@@ -124,3 +124,39 @@
   width: 90%;
   text-align: left;
 }
+
+.tooltip {
+  width: 300px !important;
+  cursor: pointer !important;
+  border-radius: 5px !important;
+}
+
+@media (max-width: 768px) {
+  .tooltip {
+    width: 200px !important;
+  }
+}
+
+.tooltip-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border-radius: 50%; */
+  width: 25px;
+  height: 25px;
+  /* background-color: var(--land);
+  border: 2px solid var(--dusk); */
+}
+
+.tooltip-icon {
+  width: 15px;
+  height: 15px;
+}
+
+.title-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
