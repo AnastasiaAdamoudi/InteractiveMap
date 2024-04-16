@@ -13,7 +13,7 @@ export const aboutText = [
     },
     {
         title: "Synchronicity in Action",
-        paragraph: "ONline and offline Beacons can work synchronistically, ranging from one-off gatherings to community formations for action. They may trailblaze new directions, values and principles, or simply provide opportunities for neighbours to come together and create new friendships."
+        paragraph: "Online and offline Beacons can work synchronistically, ranging from one-off gatherings to community formations for action. They may trailblaze new directions, values and principles, or simply provide opportunities for neighbours to come together and create new friendships."
     },
     {
         title: "Reclaiming Beacons",

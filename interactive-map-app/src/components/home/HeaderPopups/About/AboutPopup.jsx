@@ -1,7 +1,7 @@
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import "../HeaderPopups.css";
-import { aboutText } from '../../../../constants/about.js';
+import { aboutText } from '../../../../data/about.js';
 
 const AboutPopup = ({ isOpen, onClose }) => {
 

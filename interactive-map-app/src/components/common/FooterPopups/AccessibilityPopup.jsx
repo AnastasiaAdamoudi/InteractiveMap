@@ -32,7 +32,7 @@ const AccessibilityPopup = ({ isOpen, onClose }) => {
       <h2 className="text-popup-header">Web Accessibility Statement</h2>
 
       <p className="text-popup-paragraph">
-        Light A Beacon is committed to ensuring digital accessibility for people with disabilities. We are continually improving the user experience for everyone, and applying the relevant accessibility standards.
+        This website is committed to ensuring digital accessibility for people with disabilities. We are continually improving the user experience for everyone, and applying the relevant accessibility standards.
       </p>
       </div>
     </Modal>

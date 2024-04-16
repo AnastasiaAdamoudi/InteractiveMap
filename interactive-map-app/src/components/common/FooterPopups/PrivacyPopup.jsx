@@ -32,7 +32,7 @@ const PrivacyPopup = ({ isOpen, onClose }) => {
       <h2 className="text-popup-header">Privacy Policy</h2>
 
       <p className="text-popup-paragraph">
-      If you create a beacon, your name and email will only be used to contact you about your beacon or for other beacon enthusiasts to contact you. We will not share your information with any third parties. Please keep in mind that other people with an interest in Light A Beacon will be able to see your beacon and contact you.
+      If you create a Campfire Beacon, your name and email will only be used to contact you about your Beacon or in relation to connecting with other Campfire community members. We will not share your information with any third parties. Please keep in mind that other people with an interest in Campfire Beacons will be able to see your Beacon and contact you.
       </p>
 
       </div>
