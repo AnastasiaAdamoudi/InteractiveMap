@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     rollupOptions: {
-      external: ['@hookform/resolvers/zod']
+      external: ['@hookform/resolvers/zod', 'react', 'react-dom', 'leaflet', 'react-leaflet']
     }
   }
 });
