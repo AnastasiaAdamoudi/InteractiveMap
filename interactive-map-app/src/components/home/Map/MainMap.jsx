@@ -2,7 +2,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import "./MainMap.css";
-import { BeaconPopup } from '../MapPopups/index.js';
+import BeaconPopup from '../MapPopups/BeaconPopup';
 import { pinCandle, pinShadow } from '../../../assets/index.js';
 import PropTypes from 'prop-types';
 
