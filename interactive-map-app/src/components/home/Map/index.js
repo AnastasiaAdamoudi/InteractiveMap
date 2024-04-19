@@ -1,3 +1,8 @@
 import MainMap from './MainMap';
+import BeaconPopup from './BeaconPopup';
 
-export default MainMap;
+export {
+    MainMap,
+    BeaconPopup
+    };
+    
