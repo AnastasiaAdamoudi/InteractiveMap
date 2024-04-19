@@ -8,5 +8,12 @@ export default defineConfig({
     rollupOptions: {
       external: ['@hookform/resolvers/zod', 'react', 'react-dom', 'leaflet', 'react-leaflet']
     }
+  },
+  viteFinal: (config) => {
+    config.esbuild = {
+      jsxFactory: 'jsx',
+      jsxFragment: 'Fragment'
+    };
+    return config;
   }
 });
