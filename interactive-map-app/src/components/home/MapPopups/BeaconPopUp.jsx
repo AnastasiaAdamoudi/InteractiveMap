@@ -1,6 +1,12 @@
 import "./BeaconPopup.css";
+import PropTypes from 'prop-types';
 
 const BeaconPopup = ({beacon}) => {
+
+BeaconPopup.propTypes = {
+  beacon: PropTypes.object.isRequired
+};
+
   return (
     <div className="beacon-popup-container">
     <h2 className="beacon-popup-header">Beacon #{beacon.number} created by {beacon.creatorName} ({beacon.creatorEmail})</h2>

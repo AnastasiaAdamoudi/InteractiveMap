@@ -8,14 +8,20 @@ import { z } from "zod";
 import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip } from "react-tooltip";
 import { tooltipIcon } from "../../../assets";
+import PropTypes from "prop-types";
 
 const CreateBeaconForm = ({
   isOpen,
   onClose,
   beacons,
-  updateBeacons,
-  beaconArrayLength,
 }) => {
+
+  CreateBeaconForm.propTypes = {
+    isOpen: PropTypes.bool.isRequired,
+    onClose: PropTypes.func.isRequired,
+    beacons: PropTypes.array.isRequired,
+  };
+
   const closeIcon = (
     <svg fill="#660066" viewBox="0 0 20 20" width={28} height={28}>
       <path

@@ -31,9 +31,9 @@ function App() {
     getBeaconsData();
   }, [beacons]);
 
-  const updateBeacons = (newBeacon) => {
-    setBeacons([...beacons, newBeacon]);
-  };  
+  // const updateBeacons = (newBeacon) => {
+  //   setBeacons([...beacons, newBeacon]);
+  // };  
 
   const closeModal = () => {
     setModalState({
@@ -59,7 +59,7 @@ function App() {
       <Header modalState={modalState} setModalState={setModalState} closeModal={closeModal} burgerMenuOpen={burgerMenuOpen} setBurgerMenuOpen={setBurgerMenuOpen} />
       <Routes>
         <Route path="/" element={<Home formOpen={formOpen} setFormOpen={setFormOpen} closeForm={closeForm} 
-        beacons={beacons} updateBeacons={updateBeacons}
+        beacons={beacons}
        />} />
       </Routes>
       <Footer footerModals={footerModals} setFooterModals={setFooterModals} closeFooterModals={closeFooterModals} />

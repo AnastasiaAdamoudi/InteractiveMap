@@ -1,8 +1,15 @@
 import { pinCandle } from '../../../assets/index.js';
 import { CreateBeaconForm } from '../CreateBeaconForm/index.js';
 import './CreateBeaconButton.css';
+import PropTypes from 'prop-types';
 
-const CreateBeaconButton = ({ formOpen, setFormOpen, beacons, updateBeacons, beaconArrayLength }) => {
+const CreateBeaconButton = ({ formOpen, setFormOpen, beacons }) => {
+
+  CreateBeaconButton.propTypes = {
+    formOpen: PropTypes.bool.isRequired,
+    setFormOpen: PropTypes.func.isRequired,
+    beacons: PropTypes.array.isRequired,
+  };
   
   const toggleForm = () => {
     setFormOpen(!formOpen);
@@ -19,7 +26,7 @@ const CreateBeaconButton = ({ formOpen, setFormOpen, beacons, updateBeacons, bea
         
     </div>
   
-    <CreateBeaconForm isOpen={formOpen} onClose={toggleForm} beacons={beacons} updateBeacons={updateBeacons} beaconArrayLength={beaconArrayLength} />
+    <CreateBeaconForm isOpen={formOpen} onClose={toggleForm} beacons={beacons} />
     </div>
   )
 }
