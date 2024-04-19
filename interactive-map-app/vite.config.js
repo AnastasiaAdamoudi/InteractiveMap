@@ -11,9 +11,10 @@
 //   }
 // });
 
-import importToCDN from 'vite-plugin-cdn-import'
+import { defineConfig } from 'vite';
+import importToCDN from 'vite-plugin-cdn-import'; // Importing importToCDN from the package
 
-export default {
+export default defineConfig({
     plugins: [
         importToCDN({
             modules: [
@@ -35,4 +36,5 @@ export default {
             external: ['@hookform/resolvers/zod'],
         },
     },
-}
+});
+
