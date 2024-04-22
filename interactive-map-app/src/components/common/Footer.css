@@ -34,9 +34,7 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    margin-right: 15px;
-    margin-left: auto;
-    margin-top: 10px;
+    margin: 15px 15px 5px auto;
     height: 100%;
   }
   
@@ -45,7 +43,7 @@
     justify-content: center;
     align-items: center;
     font-size: 1rem;
-    margin: -5px 0 -20px 0;
+    margin: -5px 0 -22px 0;
   }
   
   .popup-buttons-container {

@@ -1,9 +1,14 @@
 import { BeaconModel } from "../models/models.js";
 
 export async function addBeacon(req, res) {
-  const newBeacon = req.body;
+  const { creatorName, creatorEmail, beaconName, beaconLocation, beaconLatitude, beaconLongitude, beaconDescription } = req.body;
+
+  if (!creatorName || !creatorEmail || !beaconName || !beaconLocation || !beaconLatitude || !beaconLongitude || !beaconDescription) {
+    return res.status(400).json({ status: "error", message: "All fields are required" });
+  }
+
   try {
-    const beaconsData = await BeaconModel.create(newBeacon);
+    const beaconsData = await BeaconModel.create(req.body);
     res.status(201).json({ status: "success", data: beaconsData });
   } catch (error) {
     res.status(500).json({ status: "error", message: error.message });
