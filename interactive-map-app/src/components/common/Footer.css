@@ -13,28 +13,30 @@
     position: fixed;
   }
   
-  .join-button-container {
+  .middle-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: auto;
+    margin: auto 25px auto 0;
   }
   
-  .copyright-container {
+  .left-side-container {
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     margin-left: 15px;
     margin-right: auto;
   }
   
-  .credits-popupbuttons-container {
+  .right-side-container {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
     margin-right: 15px;
     margin-left: auto;
+    margin-top: 10px;
     height: 100%;
   }
   
@@ -43,6 +45,7 @@
     justify-content: center;
     align-items: center;
     font-size: 1rem;
+    margin: -5px 0 -20px 0;
   }
   
   .popup-buttons-container {
@@ -75,8 +78,9 @@
     );
     color: var(--land);
     border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
+    border-radius: 50%;
+    height: 8vh;
+    width: 40vh;
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
@@ -99,20 +103,20 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 150px; 
+      height: 170px; 
       padding: 0; 
     }
-    .join-button-container {
+    .middle-container {
       margin: 0;
       font-size: 0.8rem;
     }
-    .copyright-container {
-      margin: 0 5px 0 0; 
+    .left-side-container {
+      margin: 10px 5px 0 0; 
     }
     .popup-buttons-container {
-      margin: -10px 0 0 0; 
+      margin: -15px 0 0 0; 
     }
-    .credits-popupbuttons-container {
+    .right-side-container {
       margin-right: 0; 
       margin: 0 0 5px 0; 
       align-items: center;
@@ -127,6 +131,11 @@
     .footer-separator {
       font-size: 0.8rem; 
       margin: 0 0.5rem; 
+    }
+    .join-button {
+      height: 8vh; 
+      width: 25vh; 
+      font-size: 0.8rem; 
     }
   }
   
