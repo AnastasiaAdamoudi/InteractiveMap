@@ -75,10 +75,11 @@ const CreateBeaconForm = ({
 
   const currentDate = new Date();
   const formattedDate = formatToDDMMYYYY(currentDate.toISOString());
-  const sanitizedDescription = DOMPurify.sanitize(formData.beaconDescription);
 
   const onSubmit = async (formData) => {
     try {
+      const sanitizedDescription = DOMPurify.sanitize(formData.beaconDescription);
+      
       const newBeacon = {
         // number: beaconArrayLength > 0 ? beaconArrayLength + 1 : 1,
         creatorName: formData.creatorName,
