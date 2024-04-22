@@ -107,8 +107,13 @@ const CreateBeaconForm = ({
         // beaconUrl: "",
       });
 
+      // const response = await axios.post(
+      //   "http://localhost:3000/beacons",
+      //   newBeacon
+      // );
+
       const response = await axios.post(
-        "http://localhost:3000/beacons",
+        "https://interactivemap-1pob.onrender.com/beacons",
         newBeacon
       );
 
