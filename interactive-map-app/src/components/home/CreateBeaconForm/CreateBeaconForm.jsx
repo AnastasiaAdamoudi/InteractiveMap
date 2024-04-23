@@ -5,7 +5,6 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import DOMPurify from "dompurify";
 import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip } from "react-tooltip";
 import { tooltipIcon } from "../../../assets";
@@ -77,9 +76,7 @@ const CreateBeaconForm = ({
   const formattedDate = formatToDDMMYYYY(currentDate.toISOString());
 
   const onSubmit = async (formData) => {
-    try {
-      const sanitizedDescription = DOMPurify.sanitize(formData.beaconDescription);
-      
+    try {      
       const newBeacon = {
         // number: beaconArrayLength > 0 ? beaconArrayLength + 1 : 1,
         creatorName: formData.creatorName,
@@ -89,7 +86,7 @@ const CreateBeaconForm = ({
         beaconLocation: formData.beaconLocation,
         beaconLatitude: formData.beaconLatitude,
         beaconLongitude: formData.beaconLongitude,
-        beaconDescription: sanitizedDescription,
+        beaconDescription: formData.beaconDescription,
         // beaconUrl: formData.beaconUrl,
       };
 
