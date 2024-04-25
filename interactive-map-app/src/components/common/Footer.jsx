@@ -2,6 +2,7 @@ import "./Footer.css";
 import { PrivacyPopup, AccessibilityPopup } from "./FooterPopups";
 
 const Footer = ({ footerModals, setFooterModals }) => {
+
   const { privacyOpen, accessibilityOpen } = footerModals;
 
   const togglePrivacyModal = () => {

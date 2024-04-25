@@ -15,7 +15,7 @@ Home.propTypes = {
   return (
     <div className="home">
         <MainMap beacons={beacons} />
-        <CreateBeaconButton formOpen={formOpen} setFormOpen={setFormOpen} closeForm={closeForm} beacons={beacons} />
+        <CreateBeaconButton />
     </div>
   )
 }

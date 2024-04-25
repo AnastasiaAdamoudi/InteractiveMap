@@ -2,6 +2,8 @@
   margin: 0;
   padding: 2rem;
   text-align: center;
+  width: 100%;
+  background-color: var(--land);
 }
 
 :root {
@@ -16,15 +18,14 @@
 }
 
 /* Extra Small devices (phones, 350px and down) */
-@media only screen and (max-width: 380px) {
+@media only screen and (max-width: 350px) {
+  #root {
+    padding: 1rem;
+  }
 }
 
 /* Medium devices (tablets, 768px and down) */
 @media only screen and (max-width: 768px) {
-}
-
-/* Extra Large devices (large desktops, 1280px and down) */
-@media only screen and (max-width: 1280px) {
 }
 
 .text-link {

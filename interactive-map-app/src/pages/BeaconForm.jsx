@@ -1,38 +1,19 @@
-import "react-responsive-modal/styles.css";
-import { Modal } from "react-responsive-modal";
-import "./CreateBeaconForm.css";
+import "./BeaconForm.css";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip } from "react-tooltip";
-import { tooltipIcon } from "../../../assets";
+import { tooltipIcon } from "../assets";
+import ExpandGuidanceButton from "../components/home/BeaconFormExtras/ExpandGuidanceButton";
 import PropTypes from "prop-types";
 
-const CreateBeaconForm = ({
-  isOpen,
-  onClose,
-  beacons,
-}) => {
+const BeaconForm = ( {beacons} ) => {
 
-  CreateBeaconForm.propTypes = {
-    isOpen: PropTypes.bool.isRequired,
-    onClose: PropTypes.func.isRequired,
+  BeaconForm.propTypes = {
     beacons: PropTypes.array.isRequired,
   };
-
-  const closeIcon = (
-    <svg fill="#660066" viewBox="0 0 20 20" width={28} height={28}>
-      <path
-        fillRule="evenodd"
-        d="M4,4 L16,16 M4,16 L16,4"
-        stroke="#660066"
-        strokeWidth="3"
-        clipRule="evenodd"
-      ></path>
-    </svg>
-  );
 
   const schema = z.object({
     creatorName: z.string().nonempty({ message: "Creator name is required" }),
@@ -96,6 +77,20 @@ const CreateBeaconForm = ({
 
       // updateBeacons(newBeacon);
 
+      // const response = await axios.post(
+      //   "http://localhost:3000/beacons",
+      //   newBeacon
+      // );
+
+      const response = await axios.post('https://interactivemap-1pob.onrender.com/beacons', newBeacon, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+  );
+
+      console.log("This is the response sent to the server: ", response.data);
+
       reset({
         creatorName: "",
         creatorEmail: "",
@@ -107,41 +102,25 @@ const CreateBeaconForm = ({
         // beaconUrl: "",
       });
 
-      // const response = await axios.post(
-      //   "http://localhost:3000/beacons",
-      //   newBeacon
-      // );
-
-      const response = await axios.post(
-        "https://interactivemap-1pob.onrender.com/beacons",
-        newBeacon
-      );
-
-      console.log("This is the response sent to the server: ", response.data);
-
-      onClose();
     } catch (err) {
       console.error(err.message);
     }
   };
 
   return (
-    <Modal
-      open={isOpen}
-      onClose={() => {
-        onClose();
-        reset();
-      }}
-      center
-      closeIcon={closeIcon}
-      classNames={{
-        overlay: "customOverlay",
-        modal: "customModal",
-      }}
-    >
+    <div className="form-page">
+
+      <div className="form-header">
+        <h2 className="page-title">Complete the form with your beacon information</h2>
+        <ExpandGuidanceButton />
+      </div>
+
       <div className="form-container">
+
         <div className="form-content">
+
           <form onSubmit={handleSubmit(onSubmit)}>
+
             <div className="form-group">
               <label htmlFor="creatorName" className="form-label">
                 Creator Name
@@ -217,7 +196,6 @@ const CreateBeaconForm = ({
               <div className="error-message">
                 {errors?.beaconDescription?.message}
               </div>
-
               <div className="error-message">
                 {errors?.beaconDescription?.message}
               </div>
@@ -326,11 +304,15 @@ const CreateBeaconForm = ({
                 Create Beacon
               </button>
             </div>
+
           </form>
+
         </div>
+
       </div>
-    </Modal>
+      
+    </div>
   );
 };
 
-export default CreateBeaconForm;
+export default BeaconForm;

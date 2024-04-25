@@ -13,6 +13,10 @@ const mongoUri = process.env.MONGO_URI;
 
 app.use(express.json());
 app.use(cors());
+// app.use(cors({
+//   origin: 'https://www.lightabeacon.com/'
+// }));
+
 
 mongoose
   .connect(mongoUri)

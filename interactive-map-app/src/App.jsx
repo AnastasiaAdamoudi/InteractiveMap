@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from "axios";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Header, Footer } from './components/common/index.js';
-import Home from './pages/Home';
+import { Home, BeaconForm } from './pages/index.js';
 
 function App() {
 
@@ -16,7 +16,7 @@ function App() {
     privacyOpen: false,
     accessibilityOpen: false,
   });
-  const [formOpen, setFormOpen] = useState(false);
+
   const [beacons, setBeacons] = useState([]);
 
   useEffect(() => {
@@ -50,18 +50,14 @@ function App() {
     });
   };
 
-  const closeForm = () => {
-    setFormOpen(false);
-  };
-
   return (
     <Router>
     <div>
       <Header modalState={modalState} setModalState={setModalState} closeModal={closeModal} burgerMenuOpen={burgerMenuOpen} setBurgerMenuOpen={setBurgerMenuOpen} />
       <Routes>
-        <Route path="/" element={<Home formOpen={formOpen} setFormOpen={setFormOpen} closeForm={closeForm} 
-        beacons={beacons}
+        <Route path="/" element={<Home beacons={beacons}
        />} />
+        <Route path="/beacon-form" element={<BeaconForm beacons={beacons} />} />
       </Routes>
       <Footer footerModals={footerModals} setFooterModals={setFooterModals} closeFooterModals={closeFooterModals} />
     </div>

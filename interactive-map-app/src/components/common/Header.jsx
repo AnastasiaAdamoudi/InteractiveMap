@@ -1,9 +1,17 @@
 import './Header.css';
 import { beaconEllipse } from '../../assets/index.js';
-import AboutPopup from "../home/HeaderPopups/About/index.js";
-import GuidancePopup from "../home/HeaderPopups/Guidance/index.js";
+import { AboutPopup, GuidancePopup } from '../home/HeaderPopups/index.js';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const Header = ({ modalState, setModalState, burgerMenuOpen, setBurgerMenuOpen }) => {
+
+  Header.propTypes = {
+    modalState: PropTypes.object.isRequired,
+    setModalState: PropTypes.func.isRequired,
+    burgerMenuOpen: PropTypes.bool.isRequired,
+    setBurgerMenuOpen: PropTypes.func.isRequired,
+  };
 
   const { aboutOpen, guidanceOpen } = modalState;
 
@@ -30,7 +38,9 @@ const Header = ({ modalState, setModalState, burgerMenuOpen, setBurgerMenuOpen }
   return (
     <div className="header-container">
       <div className="left-side-header-container">
+        <Link to="/" className="header-logo">
         <img src={beaconEllipse} alt="beacon" className="beacon-image" />
+        </Link>
         <div className="header-title-container">
           <h1 className="header-title">Light A Beacon</h1>
           <h2 className="header-subtitle">How we light up the world</h2>
