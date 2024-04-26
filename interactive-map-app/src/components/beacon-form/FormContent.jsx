@@ -77,20 +77,20 @@ const BeaconForm = ({ beacons }) => {
 
       // updateBeacons(newBeacon);
 
-      const response = await axios.post(
-        "http://localhost:3000/beacons",
-        newBeacon
-      );
-
       // const response = await axios.post(
-      //   "https://interactivemap-1pob.onrender.com/beacons",
-      //   newBeacon,
-      //   {
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //   }
+      //   "http://localhost:3000/beacons",
+      //   newBeacon
       // );
+
+      const response = await axios.post(
+        "https://interactivemap-1pob.onrender.com/beacons",
+        newBeacon,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       console.log("This is the response sent to the server: ", response.data);
 
