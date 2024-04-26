@@ -17,7 +17,6 @@ app.use(cors());
 //   origin: 'https://www.lightabeacon.com/'
 // }));
 
-
 mongoose
   .connect(mongoUri)
   .then(() => {

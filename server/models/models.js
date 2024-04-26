@@ -12,13 +12,17 @@ const beaconSchema = new Schema({
         type: String,
         required: true,
         minlength: 8,
-        // validate: {
-        //     // Check if it's an email address
-        //     validator: function(value) {
-        //         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-        //     },
-        //     message: "Email address must be valid"
-        // }
+        validate: {
+            // Check if it's an email address
+            validator: function(value) {
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+            },
+            message: "Email address must be valid"
+        }
+    },
+    createdOn: {
+        type: Date,
+        default: Date.now
     },
     beaconName: {
         type: String,
@@ -30,6 +34,11 @@ const beaconSchema = new Schema({
         required: true,
         minlength: 2,
     },
+    beaconDescription: {
+        type: String,
+        required: true,
+        minlength: 20,
+    },
     beaconLatitude: {
         type: String,
         required: true,
@@ -38,15 +47,6 @@ const beaconSchema = new Schema({
         type: String,
         required: true,
     },
-    beaconDescription: {
-        type: String,
-        required: true,
-        minlength: 10,
-    },
-    createdOn: {
-        type: Date,
-        default: Date.now
-    }
 });
 
 export const BeaconModel = model('beacons', beaconSchema);
