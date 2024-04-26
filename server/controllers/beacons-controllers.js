@@ -18,11 +18,14 @@ export async function addBeacon(req, res) {
     const existingBeacon = await BeaconModel.findOne({ beaconLatitude, beaconLongitude });
 
     // If there's an existing beacon with the same coordinates, offset the new beacon slightly
+    let adjustedLatitude = beaconLatitude;
+    let adjustedLongitude = beaconLongitude;
+
     if (existingBeacon) {
       // Offset the latitude and/or longitude
       const offset = 0.001;
-      beaconLatitude += offset;
-      beaconLongitude += offset;
+      adjustedLatitude += offset;
+      adjustedLongitude += offset;
     }
 
     // Create new beacon
@@ -31,8 +34,8 @@ export async function addBeacon(req, res) {
       creatorEmail,
       beaconName,
       beaconLocation,
-      beaconLatitude,
-      beaconLongitude,
+      beaconLatitude: adjustedLatitude,
+      beaconLongitude: adjustedLongitude,
       beaconDescription
     });
 
@@ -50,6 +53,7 @@ export async function addBeacon(req, res) {
     }
   }
 }
+
 
 export async function getAllBeacons(req, res) {
   try {
