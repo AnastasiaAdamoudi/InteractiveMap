@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { guidanceText } from "../../../data/guidance";
+import { guidanceText } from "../../data/guidance";
 
 const ExpandGuidanceButton = () => {
   const [guidanceExpanded, setGuidanceExpanded] = useState(false);

@@ -160,6 +160,10 @@
   margin: 0 auto 0 1rem;
 }
 
+#beaconDescription {
+  height: 300px;
+}
+
 @media (max-width: 768px) {
   .tooltip {
     width: 200px !important;
