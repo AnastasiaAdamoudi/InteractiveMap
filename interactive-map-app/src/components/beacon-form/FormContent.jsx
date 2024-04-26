@@ -1,16 +1,20 @@
 import axios from "axios";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip } from "react-tooltip";
 import { tooltipIcon } from "../../assets";
+import ThankYouModal from "./ThankYouModal";
 import PropTypes from "prop-types";
 
 const BeaconForm = ({ beacons }) => {
   BeaconForm.propTypes = {
     beacons: PropTypes.array.isRequired,
   };
+
+  const [openModal, setOpenModal] = useState(false);
 
   const schema = z.object({
     creatorName: z.string().nonempty({ message: "Creator name is required" }),
@@ -65,17 +69,15 @@ const BeaconForm = ({ beacons }) => {
         createdOn: new Date().toISOString(),
         beaconName: formData.beaconName,
         beaconLocation: formData.beaconLocation,
+        beaconDescription: formData.beaconDescription,
         beaconLatitude: formData.beaconLatitude,
         beaconLongitude: formData.beaconLongitude,
-        beaconDescription: formData.beaconDescription,
         // beaconUrl: formData.beaconUrl,
       };
 
       console.log("Beacons: ", beacons);
       console.log("Form data: ", formData);
       console.log("New beacon created: ", newBeacon);
-
-      // updateBeacons(newBeacon);
 
       // const response = await axios.post(
       //   "http://localhost:3000/beacons",
@@ -104,6 +106,9 @@ const BeaconForm = ({ beacons }) => {
         beaconDescription: "",
         // beaconUrl: "",
       });
+
+      setOpenModal(true);
+
     } catch (error) {
       console.error("Error creating new beacon: ", error);
     }
@@ -182,9 +187,6 @@ Our immediate mission will be to meet regularly and discuss what we can do to fu
 
 (Please edit text specifically for your Beacon.)"
           ></textarea>
-          <div className="error-message">
-            {errors?.beaconDescription?.message}
-          </div>
           <div className="error-message">
             {errors?.beaconDescription?.message}
           </div>
@@ -292,6 +294,9 @@ Our immediate mission will be to meet regularly and discuss what we can do to fu
           </button>
         </div>
       </form>
+
+      <ThankYouModal open={openModal} onClose={() => setOpenModal(false)} />
+
     </div>
   );
 };
