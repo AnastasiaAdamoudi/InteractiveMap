@@ -40,12 +40,16 @@ const beaconSchema = new Schema({
         minlength: 20,
     },
     beaconLatitude: {
-        type: String,
+        type: Number,
         required: true,
+        min: -90,
+        max: 90,
     },
     beaconLongitude: {
-        type: String,
+        type: Number,
         required: true,
+        min: -180,
+        max: 180,
     },
 });
 

@@ -17,28 +17,48 @@ const BeaconForm = ({ beacons }) => {
   const [openModal, setOpenModal] = useState(false);
 
   const schema = z.object({
-    creatorName: z.string().nonempty({ message: "Creator name is required" }),
+    creatorName: z
+    .string()
+    .min(2, { message: "Creator name must be at least 2 characters long" })
+    .nonempty({ message: "Creator name is required" }),
     creatorEmail: z
       .string()
       .email({ message: "Invalid email address" })
+      .min(8, { message: "Creator email must be at least 8 characters long" })
       .nonempty({ message: "Creator email is required" }),
-    beaconName: z.string().nonempty({ message: "Beacon name is required" }),
+    beaconName: z
+    .string()
+    .min(2, { message: "Beacon name must be at least 2 characters long" })
+    .nonempty({ message: "Beacon name is required" }),
     beaconLocation: z
       .string()
+      .min(2, { message: "Beacon location must be at least 2 characters long" })
       .nonempty({ message: "Beacon location is required" }),
     beaconDescription: z
       .string()
       .min(20, { message: "Description must be at least 20 characters long" })
       .nonempty({ message: "Beacon description is required" }),
-    beaconLatitude: z
+      beaconLatitude: z
       .string()
-      .nonempty({ message: "Beacon latitude is required" }),
+      .min(1, { message: "Latitude is required" })
+      .refine((val) => !isNaN(parseFloat(val)), {
+        message: "Latitude must be a valid number",
+      })
+      .refine((val) => parseFloat(val) >= -90 && parseFloat(val) <= 90, {
+        message: "Latitude must be between -90 and 90",
+      }),
     beaconLongitude: z
       .string()
-      .nonempty({ message: "Beacon longitude is required" }),
-    // beaconUrl: z.string()
-    //   .url({ message: "Invalid URL" })
-    //   .optional(),
+      .min(1, { message: "Longitude is required" })
+      .refine((val) => !isNaN(parseFloat(val)), {
+        message: "Longitude must be a valid number",
+      })
+      .refine((val) => parseFloat(val) >= -180 && parseFloat(val) <= 180, {
+        message: "Longitude must be between -180 and 180",
+      }), 
+      // beaconUrl: z.string()
+      //   .url({ message: "Invalid URL" })
+      //   .optional(),
   });
 
   const { register, handleSubmit, formState, reset } = useForm({
