@@ -14,8 +14,28 @@ export async function addBeacon(req, res) {
       return res.status(400).json({ status: "error", message: "Latitude must be between -90 and 90, and longitude must be between -180 and 180" });
     }
 
+    // Check if there's an existing beacon with the same coordinates
+    const existingBeacon = await BeaconModel.findOne({ beaconLatitude, beaconLongitude });
+
+    // If there's an existing beacon with the same coordinates, offset the new beacon slightly
+    if (existingBeacon) {
+      // Offset the latitude and/or longitude
+      const offset = 0.001;
+      beaconLatitude += offset;
+      beaconLongitude += offset;
+    }
+
     // Create new beacon
-    const beaconsData = await BeaconModel.create(req.body);
+    const beaconsData = await BeaconModel.create({
+      creatorName,
+      creatorEmail,
+      beaconName,
+      beaconLocation,
+      beaconLatitude,
+      beaconLongitude,
+      beaconDescription
+    });
+
     res.status(201).json({ status: "success", data: beaconsData });
   } catch (error) {
     // Handle specific types of errors
@@ -30,8 +50,6 @@ export async function addBeacon(req, res) {
     }
   }
 }
-
-
 
 export async function getAllBeacons(req, res) {
   try {

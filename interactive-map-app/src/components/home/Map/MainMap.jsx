@@ -1,6 +1,7 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
+import MarkerClusterGroup from 'react-leaflet-cluster'
 import "./MainMap.css";
 import BeaconPopup from './BeaconPopup';
 import { pinCandle, pinShadow } from '../../../assets/index.js';
@@ -8,9 +9,9 @@ import PropTypes from 'prop-types';
 
 const MainMap = ({ beacons }) => {
 
-MainMap.propTypes = {
-  beacons: PropTypes.array.isRequired
-};
+  MainMap.propTypes = {
+    beacons: PropTypes.array.isRequired
+  };
 
   const customMarker = new L.icon({
     iconUrl: pinCandle,
@@ -33,17 +34,33 @@ MainMap.propTypes = {
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
-        {beacons.map((beacon, index) => (
-          <Marker
-            key={index}
-            position={[beacon.beaconLatitude, beacon.beaconLongitude]}
-            icon={customMarker}
-          >
-            <Popup>
-              <BeaconPopup beacon={beacon} />
-            </Popup>
-          </Marker>
-        ))}
+        <MarkerClusterGroup
+          chunkedLoading
+          iconCreateFunction={(cluster) => {
+            const count = cluster.getChildCount();
+            return L.divIcon({
+              html: `<div class="cluster-icon">${count}</div>`,
+              className: 'custom-cluster-icon',
+              iconSize: [40, 40]
+            });
+          }}
+        >
+          {beacons.map((beacon, index) => (
+            <Marker
+              key={index}
+              position={[
+                beacon.beaconLatitude,
+                beacon.beaconLongitude
+              ]}
+              icon={customMarker}
+            >
+              <Popup>
+                <BeaconPopup beacon={beacon} />
+              </Popup>
+            </Marker>
+          ))}
+        </MarkerClusterGroup>
+
       </MapContainer>
     </div>
   );
