@@ -162,10 +162,10 @@
 .burger-menu-content {
     display: flex;
     flex-direction: column;
-    position: absolute;
-    top: 13.5vh;
+    position: fixed;
+    top: 90px;
     left: auto;
-    right: 40px;
+    right: 0;
     background-color: var(--background);
     z-index: 10;
     width: 40%;

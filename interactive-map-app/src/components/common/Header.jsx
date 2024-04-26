@@ -48,7 +48,8 @@ const Header = ({ modalState, setModalState, burgerMenuOpen, setBurgerMenuOpen }
       </div>
 
       <div className="right-side-header-container">
-        <div className="burger-menu" onClick={toggleBurgerMenu}>
+        <div className={`burger-menu ${burgerMenuOpen ? "open" : ""}`}
+            onClick={toggleBurgerMenu}>
           <div className="bar" id="bar1"></div>
           <div className="bar" id="bar2"></div>
           <div className="bar" id="bar3"></div>
