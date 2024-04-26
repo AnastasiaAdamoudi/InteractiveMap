@@ -36,7 +36,7 @@ MainMap.propTypes = {
         {beacons.map((beacon, index) => (
           <Marker
             key={index}
-            position={[beacon.beaconLatitude, beacon.beaconLongitude]}
+            position={[parseFloat(beacon.beaconLatitude), parseFloat(beacon.beaconLongitude)]}
             icon={customMarker}
           >
             <Popup>

@@ -12,13 +12,13 @@ const beaconSchema = new Schema({
         type: String,
         required: true,
         minlength: 8,
-        validate: {
-            // Check if it's an email address
-            validator: function(value) {
-                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-            },
-            message: "Email address must be valid"
-        }
+        // validate: {
+        //     // Check if it's an email address
+        //     validator: function(value) {
+        //         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+        //     },
+        //     message: "Email address must be valid"
+        // }
     },
     beaconName: {
         type: String,
@@ -31,11 +31,11 @@ const beaconSchema = new Schema({
         minlength: 2,
     },
     beaconLatitude: {
-        type: Number,
+        type: String,
         required: true,
     },
     beaconLongitude: {
-        type: Number,
+        type: String,
         required: true,
     },
     beaconDescription: {

@@ -20,22 +20,15 @@ const BeaconForm = ( {beacons} ) => {
       .email({ message: "Invalid email address" })
       .nonempty({ message: "Creator email is required" }),
     beaconName: z.string().nonempty({ message: "Beacon name is required" }),
-    beaconLocation: z
-      .string()
-      .nonempty({ message: "Beacon location is required" }),
-    beaconLatitude: z
-      .string()
-      .nonempty({ message: "Beacon latitude is required" }),
-    beaconLongitude: z
-      .string()
-      .nonempty({ message: "Beacon longitude is required" }),
-    beaconDescription: z
-      .string()
-      .nonempty({ message: "Beacon description is required" }),
+    beaconLocation: z.string().nonempty({ message: "Beacon location is required" }),
+    beaconLatitude: z.string().nonempty({ message: "Beacon latitude is required" }),
+    beaconLongitude: z.string().nonempty({ message: "Beacon longitude is required" }),
+    beaconDescription: z.string().nonempty({ message: "Beacon description is required" }),
     // beaconUrl: z.string()
     //   .url({ message: "Invalid URL" })
     //   .optional(),
   });
+  
 
   const { register, handleSubmit, formState, reset } = useForm({
     resolver: zodResolver(schema),
@@ -55,7 +48,9 @@ const BeaconForm = ( {beacons} ) => {
   const formattedDate = formatToDDMMYYYY(currentDate.toISOString());
 
   const onSubmit = async (formData) => {
+
     try {      
+
       const newBeacon = {
         // number: beaconArrayLength > 0 ? beaconArrayLength + 1 : 1,
         creatorName: formData.creatorName,
