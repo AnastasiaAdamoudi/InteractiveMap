@@ -164,6 +164,21 @@
   height: 300px;
 }
 
+.thankyou-modal-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.modal-separator {
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0.5rem;
+}
+
 @media (max-width: 768px) {
   .tooltip {
     width: 200px !important;
