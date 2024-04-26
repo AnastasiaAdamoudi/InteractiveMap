@@ -34,7 +34,7 @@ const MainMap = ({ beacons }) => {
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
-        <MarkerClusterGroup
+        {/* <MarkerClusterGroup
           chunkedLoading
           iconCreateFunction={(cluster) => {
             const count = cluster.getChildCount();
@@ -44,13 +44,13 @@ const MainMap = ({ beacons }) => {
               iconSize: [40, 40]
             });
           }}
-        >
+        > */}
           {beacons.map((beacon, index) => (
             <Marker
               key={index}
               position={[
-                beacon.beaconLatitude,
-                beacon.beaconLongitude
+                beacon.beaconLatitude + (index * 0.001), // Offset by a small amount to prevent overlapping markers
+                beacon.beaconLongitude + (index * 0.001) // Offset by a small amount to prevent overlapping markers
               ]}
               icon={customMarker}
             >
@@ -59,7 +59,7 @@ const MainMap = ({ beacons }) => {
               </Popup>
             </Marker>
           ))}
-        </MarkerClusterGroup>
+        {/* </MarkerClusterGroup> */}
 
       </MapContainer>
     </div>

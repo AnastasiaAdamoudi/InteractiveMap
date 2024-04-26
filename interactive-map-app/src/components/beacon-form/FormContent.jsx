@@ -38,7 +38,7 @@ const BeaconForm = ({ beacons }) => {
       .string()
       .min(20, { message: "Description must be at least 20 characters long" })
       .nonempty({ message: "Beacon description is required" }),
-      beaconLatitude: z
+    beaconLatitude: z
       .string()
       .min(1, { message: "Latitude is required" })
       .refine((val) => !isNaN(parseFloat(val)), {
@@ -82,6 +82,24 @@ const BeaconForm = ({ beacons }) => {
 
     try {
 
+      // if the beacons array is empty, set the number of the new beacon to 1
+      // if the beacons array is not empty, set the number of the new beacon to the length of the array + 1
+
+    // if a pair of latitude and longitude already exists, add a small offset to the new latitude and longitude to prevent overlapping markers
+    const isDuplicateCoordinates = beacons.some(
+      (beacon) =>
+        beacon.beaconLatitude === parseFloat(formData.beaconLatitude) &&
+        beacon.beaconLongitude === parseFloat(formData.beaconLongitude)
+    );
+
+    let newLatitude = parseFloat(formData.beaconLatitude);
+    let newLongitude = parseFloat(formData.beaconLongitude);
+
+    if (isDuplicateCoordinates) {
+      newLatitude += 0.001; 
+      newLongitude += 0.001;
+    }
+
       const newBeacon = {
         // number: beaconArrayLength > 0 ? beaconArrayLength + 1 : 1,
         creatorName: formData.creatorName,
@@ -90,8 +108,8 @@ const BeaconForm = ({ beacons }) => {
         beaconName: formData.beaconName,
         beaconLocation: formData.beaconLocation,
         beaconDescription: formData.beaconDescription,
-        beaconLatitude: formData.beaconLatitude,
-        beaconLongitude: formData.beaconLongitude,
+        beaconLatitude: newLatitude,
+        beaconLongitude: newLongitude,
         // beaconUrl: formData.beaconUrl,
       };
 
