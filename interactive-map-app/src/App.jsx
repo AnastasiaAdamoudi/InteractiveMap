@@ -3,15 +3,15 @@ import { useState, useEffect } from 'react';
 import axios from "axios";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Header, Footer } from './components/common/index.js';
-import { Home, BeaconForm } from './pages/index.js';
+import { Home, About, BeaconForm, BeaconList } from './pages/index.js';
 
 function App() {
 
   const [burgerMenuOpen, setBurgerMenuOpen] = useState(false);
-  const [modalState, setModalState] = useState({
-    aboutOpen: false,
-    guidanceOpen: false,
-  });
+  // const [modalState, setModalState] = useState({
+  //   aboutOpen: false,
+  //   guidanceOpen: false,
+  // });
   const [footerModals, setFooterModals] = useState({
     privacyOpen: false,
     accessibilityOpen: false,
@@ -36,12 +36,12 @@ function App() {
   //   setBeacons([...beacons, newBeacon]);
   // };  
 
-  const closeModal = () => {
-    setModalState({
-      aboutOpen: false,
-      guidanceOpen: false,
-    });
-  };  
+  // const closeModal = () => {
+  //   setModalState({
+  //     aboutOpen: false,
+  //     guidanceOpen: false,
+  //   });
+  // };  
 
   const closeFooterModals = () => {
     setFooterModals({
@@ -53,11 +53,13 @@ function App() {
   return (
     <Router>
     <div>
-      <Header modalState={modalState} setModalState={setModalState} closeModal={closeModal} burgerMenuOpen={burgerMenuOpen} setBurgerMenuOpen={setBurgerMenuOpen} />
+      <Header burgerMenuOpen={burgerMenuOpen} setBurgerMenuOpen={setBurgerMenuOpen} />
       <Routes>
         <Route path="/" element={<Home beacons={beacons}
        />} />
+        <Route path="/about" element={<About />} />
         <Route path="/beacon-form" element={<BeaconForm beacons={beacons} />} />
+        <Route path="/beacon-list" element={<BeaconList beacons={beacons} />} />
       </Routes>
       <Footer footerModals={footerModals} setFooterModals={setFooterModals} closeFooterModals={closeFooterModals} />
     </div>

@@ -1,38 +1,17 @@
 import './Header.css';
 import { beaconEllipse } from '../../assets/index.js';
-import { AboutPopup, GuidancePopup } from '../home/HeaderPopups/index.js';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const Header = ({ modalState, setModalState, burgerMenuOpen, setBurgerMenuOpen }) => {
+const Header = ({ burgerMenuOpen, setBurgerMenuOpen }) => {
 
   Header.propTypes = {
-    modalState: PropTypes.object.isRequired,
-    setModalState: PropTypes.func.isRequired,
     burgerMenuOpen: PropTypes.bool.isRequired,
     setBurgerMenuOpen: PropTypes.func.isRequired,
   };
 
-  const { aboutOpen, guidanceOpen } = modalState;
-
   const toggleBurgerMenu = () => {
     setBurgerMenuOpen(!burgerMenuOpen);
-  };
-
-  const toggleAboutModal = () => {
-    setModalState({
-      aboutOpen: !aboutOpen,
-      guidanceOpen,
-    });
-    setBurgerMenuOpen(false);
-  };
-
-  const toggleGuidanceModal = () => {
-    setModalState({
-      aboutOpen,
-      guidanceOpen: !guidanceOpen,
-    });
-    setBurgerMenuOpen(false);
   };
 
   return (
@@ -58,32 +37,35 @@ const Header = ({ modalState, setModalState, burgerMenuOpen, setBurgerMenuOpen }
         {/* Burger menu content */}
         {burgerMenuOpen && (
           <div className="burger-menu-content">
-            <div onClick={toggleAboutModal} className="burger-menu-link">
+          <Link to="/about" className="burger-menu-link">
+            <div className="burger-menu-link">
               About
             </div>
+            </Link>
             <br />
-            <div type="button" onClick={toggleGuidanceModal} className="burger-menu-link">
-              Guidance
+            <Link to="/beacon-list" className="burger-menu-link">
+            <div type="button" className="burger-menu-link">
+              Beacons
             </div>
+            </Link>
           </div>
         )}
 
         {/* Desktop menu content */}
         <div className="header-popup-button-container" id="about-button">
-          <button type="button" onClick={toggleAboutModal} className="header-popup-button">
+        <Link to="/about" className="burger-menu-link">
+          <button type="button" className="header-popup-button">
             About
           </button>
+          </Link>
         </div>
 
         <div className="header-popup-button-container" id="guidance-button">
-          <button type="button" onClick={toggleGuidanceModal} className="header-popup-button">
-            Guidance
+        <Link to="/beacon-list" className="burger-menu-link">
+          <button type="button" className="header-popup-button">
+            Beacons
           </button>
-        </div>
-
-        <div className="menu-container">
-          <AboutPopup isOpen={aboutOpen} onClose={toggleAboutModal} />
-          <GuidancePopup isOpen={guidanceOpen} onClose={toggleGuidanceModal} />
+          </Link>
         </div>
       </div>
     </div>
