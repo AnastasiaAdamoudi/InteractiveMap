@@ -15,7 +15,7 @@ export async function addBeacon(req, res) {
     }
 
     // Check if the same pair of latitude and longitude already exists
-    const existingBeacon = await BeaconModel.findOne({ beaconLatitude, beaconLongitude });
+    const existingBeacon = await beaconModel.findOne({ beaconLatitude, beaconLongitude });
 
     let newLatitude = beaconLatitude;
     let newLongitude = beaconLongitude;
@@ -26,7 +26,7 @@ export async function addBeacon(req, res) {
     };      
 
     // Create new beacon
-    const beaconsData = await BeaconModel.create({
+    const beaconsData = await beaconModel.create({
       creatorName,
       creatorEmail,
       beaconName,
@@ -54,7 +54,7 @@ export async function addBeacon(req, res) {
 
 export async function getAllBeacons(req, res) {
   try {
-    const beaconsData = await BeaconModel.find();
+    const beaconsData = await beaconModel.find();
     res.status(200).json(beaconsData);
   } catch (error) {
     res.status(500).json({ status: "error", message: error.message });

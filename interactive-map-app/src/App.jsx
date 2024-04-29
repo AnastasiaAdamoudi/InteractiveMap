@@ -22,8 +22,8 @@ function App() {
   useEffect(() => {
     const getBeaconsData = async () => {
       try {
-        // const response = await axios.get('http://localhost:3000/beacons'); // Localhost
-        const response = await axios.get('https://interactivemap-1pob.onrender.com/beacons'); // Server deployed on Render
+        const response = await axios.get('http://localhost:3000/beacons'); // Localhost
+        // const response = await axios.get('https://interactivemap-1pob.onrender.com/beacons'); // Server deployed on Render
         setBeacons(response.data);
       } catch (error) {
         console.error('Error fetching beacon data:', error);
