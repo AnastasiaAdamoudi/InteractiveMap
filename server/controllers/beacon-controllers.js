@@ -1,4 +1,4 @@
-import { BeaconModel } from "../models/models.js";
+import { beaconModel } from "../models/models.js";
 
 export async function addBeacon(req, res) {
   const { creatorName, creatorEmail, beaconName, beaconLocation, beaconLatitude, beaconLongitude, beaconDescription } = req.body;

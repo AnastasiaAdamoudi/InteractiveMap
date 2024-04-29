@@ -54,4 +54,4 @@ const beaconSchema = new Schema({
     members: [{ type: Schema.Types.ObjectId, ref: 'Member' }]
 });
 
-export const BeaconModel = model('beacons', beaconSchema);
+export const beaconModel = model('beacons', beaconSchema);
