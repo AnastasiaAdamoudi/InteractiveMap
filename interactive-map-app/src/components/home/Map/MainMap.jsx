@@ -50,8 +50,8 @@ const MainMap = ({ beacons }) => {
               key={index}
               // Offset by a small amount to prevent overlapping markers
               position={[
-                beacon.beaconLatitude + (index * 0.001), 
-                beacon.beaconLongitude + (index * 0.001) 
+                beacon.beaconLatitude + (beacon.beaconLatitude * 0.01), 
+                beacon.beaconLongitude + (beacon.beaconLongitude * 0.01)
               ]}
               icon={customMarker}
             >

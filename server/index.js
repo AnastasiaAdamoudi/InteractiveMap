@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
-import { beaconsRouter } from "./routes/routes.js";
+import { beaconRouter, memberRouter } from "./routes/routes.js";
 
 dotenv.config();
 
@@ -30,4 +30,5 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
-app.use("/beacons", beaconsRouter);
+app.use("/beacons", beaconRouter);
+app.use("/members", memberRouter);

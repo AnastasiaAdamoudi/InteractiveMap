@@ -1,9 +1,4 @@
-import express from 'express';
-import * as beaconsControllers from "../controllers/beacons-controllers.js"
+import { beaconRouter } from './beaconRouter';
+import { memberRouter } from './memberRouter';
 
-const beaconsRouter = express.Router();
-
-beaconsRouter.post('/', beaconsControllers.addBeacon);
-beaconsRouter.get('/', beaconsControllers.getAllBeacons);
-
-export { beaconsRouter };
+export { beaconRouter, memberRouter };
