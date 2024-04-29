@@ -5,6 +5,7 @@ const memberRouter = express.Router();
 
 memberRouter.post('/join', memberControllers.joinBeacon);
 memberRouter.get('/:beaconId', memberControllers.getMembersByBeacon);
+memberRouter.get('/:memberId', memberControllers.getBeaconsByMember);
 memberRouter.get('/', memberControllers.getAllMembers);
 
 export { memberRouter };
