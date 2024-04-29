@@ -1,22 +1,22 @@
 import { aboutText } from '../data/about.js';
+import './About.css';
 
 const About = () => {
 
   return (
-      <div className="text-popups-container">
+    <div className="about-page">
 
-      <h1 className="text-popup-header">What are beacons about</h1>
+      <h1 className="about-header">What are beacons about</h1>
 
       {aboutText.map((text, index) => (
-        <div className="text-popup" key={index}>
-        <hr className="text-popup-hr" />
+        <div className="about-content" key={index}>
+          <hr className="text-popup-hr" />
           <h3 className="text-popup-title">{text.title}</h3>
-          <p className="text-popup-paragraph">{text.paragraph}</p>
+          <p className="about-text">{text.paragraph}</p>
         </div>
       ))}
 
-
-      </div>
+    </div>
   );
 };
 

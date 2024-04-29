@@ -1,0 +1,53 @@
+.about-page {
+    width: 90%;
+    height: 100%;
+    margin: 60px auto 80px auto;
+    padding: 2rem;
+    background: var(--land);
+    text-align: center;
+  }
+  
+  .about-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto 80px auto;
+    padding: 10px;
+  }
+  
+  .about-content {
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    margin: 0 auto 0 auto;
+  }
+  
+  .about-header {
+    font-size: 1.5em;
+    font-weight: bold;
+    font-family: 'Monsterrat', sans-serif;
+    margin-right: -1rem;
+  }
+  
+  .about-text {
+    margin: 10px auto 0 1rem;
+    font-size: 1em;
+    font-family: 'Kumbh Sans', sans-serif;
+  }
+  
+  @media (max-width: 768px) {
+    .about-page {
+      padding: 10px;
+      margin-right: 1rem;
+    }
+    
+    .about-content {
+      width: 80% !important;
+      margin: 0 auto 0 1.5rem;
+    }
+  }
+  

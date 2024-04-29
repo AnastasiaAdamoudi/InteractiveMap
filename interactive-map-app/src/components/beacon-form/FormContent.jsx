@@ -82,9 +82,6 @@ const BeaconForm = ({ beacons }) => {
 
     try {
 
-      // if the beacons array is empty, set the number of the new beacon to 1
-      // if the beacons array is not empty, set the number of the new beacon to the length of the array + 1
-
     // if a pair of latitude and longitude already exists, add a small offset to the new latitude and longitude to prevent overlapping markers
     const isDuplicateCoordinates = beacons.some(
       (beacon) =>
@@ -100,18 +97,18 @@ const BeaconForm = ({ beacons }) => {
       newLongitude += 0.001;
     }
 
-      const newBeacon = {
-        // number: beaconArrayLength > 0 ? beaconArrayLength + 1 : 1,
-        creatorName: formData.creatorName,
-        creatorEmail: formData.creatorEmail,
-        createdOn: new Date().toISOString(),
-        beaconName: formData.beaconName,
-        beaconLocation: formData.beaconLocation,
-        beaconDescription: formData.beaconDescription,
-        beaconLatitude: newLatitude,
-        beaconLongitude: newLongitude,
-        // beaconUrl: formData.beaconUrl,
-      };
+    const newBeacon = {
+      id: response.data.id,
+      creatorName: formData.creatorName,
+      creatorEmail: formData.creatorEmail,
+      createdOn: new Date().toISOString(),
+      beaconName: formData.beaconName,
+      beaconLocation: formData.beaconLocation,
+      beaconDescription: formData.beaconDescription,
+      beaconLatitude: newLatitude,
+      beaconLongitude: newLongitude,
+      // beaconUrl: formData.beaconUrl,
+    };
 
       console.log("Beacons: ", beacons);
       console.log("Form data: ", formData);
