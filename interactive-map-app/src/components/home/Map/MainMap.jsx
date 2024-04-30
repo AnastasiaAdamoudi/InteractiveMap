@@ -56,7 +56,7 @@ const MainMap = ({ beacons }) => {
               icon={customMarker}
             >
               <Popup>
-                <BeaconPopup beacon={beacon} index={index} />
+                <BeaconPopup beacons={beacons} beacon={beacon} index={index} />
               </Popup>
             </Marker>
           ))}

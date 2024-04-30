@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from "axios";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Header, Footer } from './components/common/index.js';
-import { Home, About, BeaconForm, BeaconList } from './pages/index.js';
+import { Home, About, BeaconForm, BeaconList, JoinBeaconForm } from './pages/index.js';
 
 function App() {
 
@@ -60,6 +60,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/beacon-form" element={<BeaconForm beacons={beacons} />} />
         <Route path="/beacon-list" element={<BeaconList beacons={beacons} />} />
+        <Route path="/join-beacon-form/:beaconId" element={<JoinBeaconForm />} />
       </Routes>
       <Footer footerModals={footerModals} setFooterModals={setFooterModals} closeFooterModals={closeFooterModals} />
     </div>

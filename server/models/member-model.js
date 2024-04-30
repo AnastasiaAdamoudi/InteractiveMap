@@ -1,6 +1,4 @@
-import mongoose, { model } from 'mongoose';
-
-const { Schema } = mongoose;
+import mongoose, { Schema, model } from 'mongoose';
 
 const memberSchema = new Schema({
     memberName: {
@@ -24,6 +22,8 @@ const memberSchema = new Schema({
         type: Date,
         default: Date.now
     },
+    // Reference to the beacon the member has joined
+    beacon: { type: Schema.Types.ObjectId, ref: 'beacons' }
 });
 
 export const memberModel = model('members', memberSchema);
