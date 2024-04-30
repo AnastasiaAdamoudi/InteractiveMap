@@ -48,6 +48,11 @@ const Header = ({ burgerMenuOpen, setBurgerMenuOpen }) => {
               Beacons
             </div>
             </Link>
+            <Link to="/member-list" className="burger-menu-link">
+            <div type="button" className="burger-menu-link">
+              Members
+            </div>
+            </Link>
           </div>
         )}
 
@@ -67,6 +72,15 @@ const Header = ({ burgerMenuOpen, setBurgerMenuOpen }) => {
           </button>
           </Link>
         </div>
+
+        <div className="header-popup-button-container" id="members-button">
+        <Link to="/member-list" className="burger-menu-link">
+          <button type="button" className="header-popup-button">
+            Members
+          </button>
+          </Link>
+        </div>
+        
       </div>
     </div>
   );

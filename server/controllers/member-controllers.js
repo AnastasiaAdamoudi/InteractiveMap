@@ -29,7 +29,7 @@ export async function joinBeacon(req, res) {
       if (existingMember) {
         return res.status(400).json({
           status: "error",
-          message: "Member already exists for this beacon",
+          message: "Member already exists for this beacon.",
     })
 }
 

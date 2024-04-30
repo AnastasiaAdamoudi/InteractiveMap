@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const BeaconListDisplay = ({ beacons }) => {
+const BeaconListDisplay = ({ beacons, members }) => {
 
   return (
     <div className="beacon-page">
@@ -14,11 +14,13 @@ const BeaconListDisplay = ({ beacons }) => {
           <ol className="beacon-list-items">
             {beacons.map((beacon, index) => (
               <li key={index}>
-                <h2>{beacon.beaconName}</h2>
+                <h2>Beacon #{index+1}</h2>
+                <h3>{beacon.beaconName}</h3>
                 <p>{beacon.creatorName}</p>
                 <p>{beacon.createdOn}</p>
                 <p>{beacon.beaconDescription}</p>
                 <p>{beacon.beaconLocation}</p>
+                <p>{beacon.members}</p>
               </li>
             ))}
           </ol>
