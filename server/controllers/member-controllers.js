@@ -20,6 +20,19 @@ export async function joinBeacon(req, res) {
         .json({ status: "error", message: "Beacon not found" });
     }
 
+      // Check if the member already exists for this beacon
+      const existingMember = await memberModel.findOne({
+        memberName,
+        memberEmail,
+        beacon: beaconId,
+      });
+      if (existingMember) {
+        return res.status(400).json({
+          status: "error",
+          message: "Member already exists for this beacon",
+    })
+}
+
     // Create new member
     const memberData = await memberModel.create({
       memberName,

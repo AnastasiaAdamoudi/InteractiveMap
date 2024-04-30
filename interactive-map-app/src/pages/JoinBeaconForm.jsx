@@ -12,6 +12,8 @@ const JoinBeaconForm = () => {
 
   const [openJoinThankYouModal, setOpenJoinThankYouModal] = useState(false);
 
+  const [errorMessage, setErrorMessage] = useState(null);
+
   const schema = z.object({
     memberName: z
       .string()
@@ -63,7 +65,12 @@ const JoinBeaconForm = () => {
       setOpenJoinThankYouModal(true);
 
     } catch (error) {
-      console.error("Failed to join beacon:", error);
+      if (error.response && error.response.data && error.response.data.message) {
+        // Set error message received from server
+        setErrorMessage(error.response.data.message);
+      } else {
+        console.error("Failed to join beacon:", error);
+      }
     }
   };
 
@@ -92,6 +99,8 @@ const JoinBeaconForm = () => {
             Join this beacon
           </button>
         </form>
+
+        {errorMessage && <p className="error-message">{errorMessage} Please click 'Cancel' to return to the map.</p>}
 
         <Link to="/">
           <button className="join-beacon-cancel-button">Cancel</button>
