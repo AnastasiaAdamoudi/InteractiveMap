@@ -1,13 +1,13 @@
 import MemberListDisplay from "../components/member-list/MemberListDisplay";
 import './BeaconList.css';
 
-const MemberList = ({ beacons, members }) => {
+const MemberList = ({ beacons, users }) => {
   return (
     <div className="member-list-page">
 
       <h1 className="member-list-header">Member List</h1>
 
-      <MemberListDisplay beacons={beacons} members={members} />
+      <MemberListDisplay beacons={beacons} users={users} />
       
     </div>
   )

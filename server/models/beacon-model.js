@@ -1,4 +1,5 @@
 import mongoose, { model } from 'mongoose';
+import { userModel } from './models.js';
 
 const { Schema } = mongoose;
 
@@ -51,7 +52,7 @@ const beaconSchema = new Schema({
         min: -180,
         max: 180,
     },
-    members: [{ type: Schema.Types.ObjectId, ref: 'Member' }]
+    members: [{ type: Schema.Types.ObjectId, ref: 'users' }]
 });
 
 export const beaconModel = model('beacons', beaconSchema);

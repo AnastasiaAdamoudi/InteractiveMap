@@ -3,7 +3,7 @@ import * as beaconControllers from "../controllers/beacon-controllers.js"
 
 const beaconRouter = express.Router();
 
-beaconRouter.post('/', beaconControllers.addBeacon);
-beaconRouter.get('/', beaconControllers.getAllBeacons);
+beaconRouter.post('/beacons', beaconControllers.addBeacon);
+beaconRouter.get('/beacons', beaconControllers.getAllBeacons);
 
 export { beaconRouter };

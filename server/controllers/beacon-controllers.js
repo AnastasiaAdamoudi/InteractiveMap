@@ -1,4 +1,4 @@
-import { beaconModel } from "../models/models.js";
+import { userModel, beaconModel } from "../models/models.js";
 
 export async function addBeacon(req, res) {
   const { creatorName, creatorEmail, beaconName, beaconLocation, beaconLatitude, beaconLongitude, beaconDescription } = req.body;
@@ -52,9 +52,21 @@ export async function addBeacon(req, res) {
 }
 
 
+// export async function getAllBeacons(req, res) {
+//   try {
+//     const beaconsData = await beaconModel.find();
+//     res.status(200).json(beaconsData);
+//   } catch (error) {
+//     res.status(500).json({ status: "error", message: error.message });
+//   }
+// }
+
 export async function getAllBeacons(req, res) {
   try {
-    const beaconsData = await beaconModel.find();
+    const beaconsData = await beaconModel.find().populate({
+      path: 'members',
+      select: 'userName userEmail',
+    });
     res.status(200).json(beaconsData);
   } catch (error) {
     res.status(500).json({ status: "error", message: error.message });

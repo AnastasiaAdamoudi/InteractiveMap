@@ -1,4 +1,4 @@
 import { beaconRouter } from './beacon-router.js';
-import { memberRouter } from './member-router.js';
+import { userRouter } from './user-router.js';
 
-export { beaconRouter, memberRouter };
+export { beaconRouter, userRouter };
