@@ -10,6 +10,7 @@ import {
   About,
   Register,
   Login,
+  ForgotPassword
   Dashboard,
   BeaconForm,
   BeaconList,
@@ -110,7 +111,7 @@ function App() {
               )
             }
           />
-          <Route path="/auth/register" element={<Register />} />
+          <Route path="/auth/register" element={<Register updateClick={updateClick} />} />
           <Route
             path="/auth/login"
             element={<Login updateClick={updateClick} />}
@@ -129,6 +130,7 @@ function App() {
               )
             }
           />
+          <Route path="/auth/forgot-password" element={<ForgotPassword />} />
           <Route
             path="/beacon-list"
             element={

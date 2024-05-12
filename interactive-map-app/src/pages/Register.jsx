@@ -5,9 +5,16 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useState } from "react";
 import useRegister from "../hooks/useRegister";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 
 const Register = () => {
   const [openRegisterThankYouModal, setOpenRegisterThankYouModal] = useState(false);
+
+  const [showPassword, setShowPassword] = useState(false);
+
+const togglePasswordVisibility = () => {
+  setShowPassword(!showPassword);
+};
 
   const { registerUser, error, loading } = useRegister();
 
@@ -62,12 +69,19 @@ const Register = () => {
           />
           {errors.username && <p>{errors.username.message}</p>}
           <label htmlFor="password">Password<span>*</span>:</label>
-          <input
-            type="password"
-            id="password"
-            {...register("password")}
-            placeholder="Enter your password"
-          />
+          <div className="password-input-container">
+        <input
+          type={showPassword ? "text" : "password"}
+          id="password"
+          {...register("password")}
+          placeholder="Enter your password"
+        />
+        {showPassword ? (
+          <FiEyeOff onClick={togglePasswordVisibility} className="eye-icon" />
+        ) : (
+          <FiEye onClick={togglePasswordVisibility} className="eye-icon" />
+        )}
+      </div>
           {errors.password && <p>{errors.password.message}</p>}
           <label htmlFor="userEmail">Email<span>*</span>:</label>
           <input

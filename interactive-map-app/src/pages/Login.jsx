@@ -6,11 +6,18 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useAuth } from "../contexts/AuthProvider";
+import { FiEye, FiEyeOff } from 'react-icons/fi';
 
 const Login = ({ updateClick }) => {
   Login.propTypes = {
     updateClick: PropTypes.func.isRequired,
   };
+
+  const [showPassword, setShowPassword] = useState(false);
+
+const togglePasswordVisibility = () => {
+  setShowPassword(!showPassword);
+};
 
   const { login } = useAuth(); 
   const navigate = useNavigate();
@@ -83,7 +90,9 @@ const Login = ({ updateClick }) => {
     } catch (err) {
       if (err.response) {
         if (err.response.status === 401) {
-          setGeneralError("Unauthorized. Please check your username and password.");
+          setGeneralError("Wrong password. Please check your password and try again.");
+        } else if (err.response.status === 404) {
+          setGeneralError("User not found. Please check your username and try again. If you don't have an account, please register.");
         } else if (err.response.status === 400) {
           setGeneralError("Missing username or password.");
         } else {
@@ -132,14 +141,21 @@ const Login = ({ updateClick }) => {
               <label htmlFor="password" className="form-label">
                 Password
               </label>
-              <input
-                {...register("password", { required: true })}
-                type="password"
-                className="form-control"
-                id="password"
-                placeholder="Enter the password"
-                onChange={clearErrors}
-              />
+              <div className="password-input-container">
+        <input
+          type={showPassword ? "text" : "password"}
+          id="password"
+          className="form-control"
+          {...register("password")}
+          placeholder="Enter your password"
+          onChange={clearErrors}
+        />
+        {showPassword ? (
+          <FiEyeOff onClick={togglePasswordVisibility} className="eye-icon" />
+        ) : (
+          <FiEye onClick={togglePasswordVisibility} className="eye-icon" />
+        )}
+      </div>
               <div className="error-message">{errors?.password?.message || passwordError}</div>
             </div>
 
@@ -151,6 +167,9 @@ const Login = ({ updateClick }) => {
             <Link to="/">
               <button className="register-user-cancel-button">Cancel</button>
             </Link>
+            <div className="forgot-password-container">
+              <Link to="/auth/forgot-password">Forgot your password?</Link>
+            </div>
           </form>
           {generalError && (
             <div className="error-message">{generalError}</div>
