@@ -1,6 +1,7 @@
 import { useAuth } from '../contexts/AuthProvider';
 import { useState } from 'react';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 export const useRegister = () => {
   const { login } = useAuth();
@@ -16,6 +17,12 @@ export const useRegister = () => {
 
       if (response.status === 201) {
         console.log(`User registered successfully: ${data.userData.username}`);
+
+        // Save the token and user data to cookies
+        Cookies.set('token', data.token, { expires: 1 / 24 });
+        Cookies.set('userData', JSON.stringify(data.userData), { expires: 1 / 24 });
+
+        // Login the user
         login(data.token, data.userData);
         console.log(`Server response status: ${response.status}`);
       } else {

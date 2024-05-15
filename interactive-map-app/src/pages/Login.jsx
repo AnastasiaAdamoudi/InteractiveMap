@@ -76,7 +76,7 @@ const togglePasswordVisibility = () => {
       const { token, userData } = response.data;
 
       console.log(`Token response from server: ${token}`);
-      console.log(`User data response from server: ${JSON.stringify(userData)}`);
+      console.log(`User data response from server: ${userData}`);
 
       login(token, userData); 
       navigate("/");

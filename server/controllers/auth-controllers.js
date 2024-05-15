@@ -60,6 +60,26 @@ export const registerUser = async (req, res) => {
 
     console.log("User saved to the database:", savedUser);
 
+    // Save the user data to a cookie
+    res.cookie('token', token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'strict',
+        expires: new Date(Date.now() + 3600000), // 1 hour expiration
+      });
+      res.cookie('userData', JSON.stringify({
+        userId: savedUser._id,
+        userFirstname: savedUser.userFirstname,
+        userSurname: savedUser.userSurname,
+        username: savedUser.username,
+        userEmail: savedUser.userEmail,
+      }), {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'strict',
+        expires: new Date(Date.now() + 3600000), // 1 hour expiration
+      });
+
     // Return a success response
     res.status(201).json({ status: "success", message: "User registered successfully", user: savedUser, });
   } catch (error) {
@@ -111,21 +131,39 @@ export const loginUser = async (req, res) => {
 
     console.log("Token for the logged in user generated:", token);
 
-    // // Attach the token to a cookie
-    // res.cookie('token', token, { httpOnly: true });
+    const userData = {
+      userId: user._id,
+      userFirstname: user.userFirstname,
+      userSurname: user.userSurname,
+      username: user.username,
+      userEmail: user.userEmail,
+    };
+
+    console.log('UserData to set in cookie:', userData);
+
+    // Set the token and user data as cookies
+    res.cookie('token', token, {
+        httpOnly: false,
+        secure: true,
+        sameSite: 'strict',
+        expires: new Date(Date.now() + 3600000), // 1 hour expiration
+      });
+
+      res.cookie('userData', JSON.stringify(userData), {
+        httpOnly: false,
+        secure: true,
+        sameSite: 'strict',
+        expires: new Date(Date.now() + 3600000), // 1 hour expiration
+      });
+
+      console.log('Response headers after setting cookies:', res.getHeaders());
 
     // Return a success response
     res.status(200).json({
       status: "success",
       message: "Login successful",
       token,
-      user: {
-        userId: user._id,
-        userFirstname: user.userFirstname,
-        userSurname: user.userSurname,
-        username: user.username,
-        userEmail: user.userEmail,
-      },
+      userData,
     });
 
     console.log("Login successful");
@@ -140,8 +178,9 @@ export const loginUser = async (req, res) => {
 
 export const logoutUser = async (req, res) => {
   try {
-    // Clear the token from the client-side
-    res.clearCookie("token");
+        // Clear the cookies
+        res.clearCookie('token');
+        res.clearCookie('userData');
 
     // Return a success response
     res

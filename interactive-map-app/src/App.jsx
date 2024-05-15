@@ -10,7 +10,7 @@ import {
   About,
   Register,
   Login,
-  ForgotPassword
+  ForgotPassword,
   Dashboard,
   BeaconForm,
   BeaconList,
