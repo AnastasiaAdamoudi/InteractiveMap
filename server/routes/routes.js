@@ -1,5 +1,6 @@
 import { beaconRouter } from './beacon-router.js';
 import { userRouter } from './user-router.js';
 import { authRouter } from './auth-router.js';
+import { profileRouter } from './profile-router.js';
 
-export { beaconRouter, userRouter, authRouter };
+export { beaconRouter, userRouter, authRouter, profileRouter };

@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
 import { userModel } from "../models/models.js";
 import dotenv from "dotenv";
 
@@ -59,11 +60,35 @@ export const authenticateUser = async (req, res, next) => {
       // Call the next middleware function
       next(); // This will call the next middleware function in the chain
   
-      res
-        .status(200)
-        .json({ status: "success", message: "User authenticated successfully" });
+      // res
+      //   .status(200)
+      //   .json({ status: "success", message: "User authenticated successfully" });
     } catch (error) {
       console.error("Error authenticating user:", error);
       res.status(401).json({ status: "error", message: "Invalid token" });
+    }
+  };
+
+  export const verifyPassword = async (req, res, next) => {
+    try {
+      const userId = req.user._id;
+      const { password } = req.body;
+  
+      const user = await userModel.findById(userId);
+      if (!user) {
+        return res.status(404).json({ status: "error", message: "User not found" });
+      }
+  
+      const isPasswordCorrect = await bcrypt.compare(password, user.password);
+      if (!isPasswordCorrect) {
+        return res.status(401).json({ status: "error", message: "Incorrect password" });
+      }
+
+      next();
+
+      // return res.status(200).json({ status: "success", message: "Password verified" });
+    } catch (error) {
+      console.error("Error:", error);
+      return res.status(500).json({ status: "error", message: "Internal server error" });
     }
   };

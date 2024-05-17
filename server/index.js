@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import cookieParser from 'cookie-parser';
-import { beaconRouter, authRouter, userRouter } from "./routes/routes.js";
+import { beaconRouter, authRouter, userRouter, profileRouter } from "./routes/routes.js";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -39,3 +39,4 @@ app.listen(PORT, () => {
 app.use("/", beaconRouter);
 app.use("/", authRouter);
 app.use("/", userRouter);
+app.use("/", profileRouter);

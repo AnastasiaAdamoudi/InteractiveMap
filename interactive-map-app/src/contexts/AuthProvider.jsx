@@ -40,55 +40,48 @@ export const AuthProvider = ({ children }) => {
   // }
 
 
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [userData, setUserData] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userData, setUserData] = useState(null);
 
-    useEffect(() => {
-      const storedToken = Cookies.get('token');
-      const storedUserData = Cookies.get('userData');
-  
-      console.log('Stored token:', storedToken);
-      console.log('Stored userData:', storedUserData);
-  
-      if (storedToken && storedUserData) {
-        try {
-          const decodedUserData = decodeURIComponent(storedUserData);
-          console.log('Decoded userData:', decodedUserData);
-  
-          const parsedUserData = JSON.parse(decodedUserData);
-          console.log('Parsed userData:', parsedUserData);
-  
-          axios.defaults.headers.common['Authorization'] = `Bearer ${storedToken}`;
-          setIsAuthenticated(true);
-          setUserData(parsedUserData);
-        } catch (error) {
-          console.error('Error parsing userData cookie:', error);
-        }
+  useEffect(() => {
+    const storedToken = Cookies.get('token');
+    const storedUserData = Cookies.get('userData');
+
+    if (storedToken && storedUserData) {
+      try {
+        const decodedUserData = decodeURIComponent(storedUserData);
+        const parsedUserData = JSON.parse(decodedUserData);
+        axios.defaults.headers.common['Authorization'] = `Bearer ${storedToken}`;
+        setIsAuthenticated(true);
+        setUserData(parsedUserData);
+      } catch (error) {
+        console.error('Error parsing userData cookie:', error);
       }
-    }, []);
-  
-    const login = (newToken, newUserData) => {
-      axios.defaults.headers.common['Authorization'] = `Bearer ${newToken}`;
-      Cookies.set('token', newToken, { expires: 1 }); // 1 day expiration
-      Cookies.set('userData', encodeURIComponent(JSON.stringify(newUserData)), { expires: 1 }); // 1 day expiration
-      setIsAuthenticated(true);
-      setUserData(newUserData);
-    };
-    
-    const logout = () => {
-      Cookies.remove('token');
-      Cookies.remove('userData');
-      delete axios.defaults.headers.common['Authorization'];
-      setIsAuthenticated(false);
-      setUserData(null);
-    };
-  
-    return (
-      <AuthContext.Provider value={{ isAuthenticated, login, logout, userData }}>
-        {children}
-      </AuthContext.Provider>
-    );
-  }
-  
+    }
+  }, []);
+
+  const login = (newToken, newUserData) => {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${newToken}`;
+    Cookies.set('token', newToken, { expires: 1 }); // 1 day expiration
+    Cookies.set('userData', encodeURIComponent(JSON.stringify(newUserData)), { expires: 1 }); // 1 day expiration
+    setIsAuthenticated(true);
+    setUserData(newUserData);
+  };
+
+  const logout = () => {
+    Cookies.remove('token');
+    Cookies.remove('userData');
+    delete axios.defaults.headers.common['Authorization'];
+    setIsAuthenticated(false);
+    setUserData(null);
+  };
+
+
+  return (
+    <AuthContext.Provider value={{ isAuthenticated, login, logout, userData }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
 
 export const useAuth = () => useContext(AuthContext);

@@ -51,16 +51,6 @@ export async function addBeacon(req, res) {
   }
 }
 
-
-// export async function getAllBeacons(req, res) {
-//   try {
-//     const beaconsData = await beaconModel.find();
-//     res.status(200).json(beaconsData);
-//   } catch (error) {
-//     res.status(500).json({ status: "error", message: error.message });
-//   }
-// }
-
 export async function getAllBeacons(req, res) {
   try {
     const beaconsData = await beaconModel.find().populate({

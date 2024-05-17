@@ -7,7 +7,6 @@ const userRouter = express.Router();
 // User routes
 userRouter.post('/beacons/:beaconId/join', authenticateUser, userControllers.joinBeacon);
 userRouter.delete('/beacons/:beaconId/unjoin', authenticateUser, userControllers.unjoinBeacon);
-userRouter.put('/users/:userId', authenticateUser, userControllers.updateUserProfile);
 userRouter.delete('/users/:userId', authenticateUser, userControllers.deleteUserAccount);
 userRouter.get('/beacons/:beaconId/users', authenticateUser, userControllers.getMembersByBeacon);
 userRouter.get('/users/:userId/beacons', authenticateUser, userControllers.getBeaconsByUser);

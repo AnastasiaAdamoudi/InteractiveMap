@@ -107,55 +107,6 @@ export async function unjoinBeacon(req, res) {
   }
 }
 
-export async function updateUserProfile(req, res) {
-  const userId = req.user._id;
-
-  try {
-    // Check if the user exists
-    const existingUser = await userModel.findById(userId);
-    if (!existingUser) {
-      return res
-        .status(404)
-        .json({ status: "error", message: "User not found" });
-    }
-
-    // Check if the new username or email already exists for another user
-    const existingUsernameOrEmail = await userModel.findOne({
-      $and: [
-        { _id: { $ne: userId } },
-        {
-          $or: [
-            { username: req.body.username },
-            { userEmail: req.body.userEmail },
-          ],
-        },
-      ],
-    });
-
-    if (existingUsernameOrEmail) {
-      return res
-        .status(409)
-        .json({ status: "error", message: "Username or email already exists" });
-    }
-
-    // Update the user document
-    existingUser.userFirstname =
-      req.body.userFirstname || existingUser.userFirstname;
-    existingUser.userSurname = req.body.userSurname || existingUser.userSurname;
-    existingUser.username = req.body.username || existingUser.username;
-    existingUser.userEmail = req.body.userEmail || existingUser.userEmail;
-
-    const updatedUser = await existingUser.save();
-
-    res.status(200).json({ status: "success", data: updatedUser });
-  } catch (error) {
-    console.error("Error updating user profile:", error);
-    res
-      .status(500)
-      .json({ status: "error", message: "Failed to update user profile" });
-  }
-}
-
 export async function deleteUserAccount(req, res) {
   const userId = req.user._id;
 
