@@ -2,6 +2,7 @@ import "./App.css";
 import { useState, useEffect, useCallback } from "react";
 import { useAuth } from "./contexts/AuthProvider";
 import axios from "axios";
+import Cookies from "js-cookie";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { Header, Footer } from "./components/common/index.js";
@@ -20,9 +21,7 @@ import {
 function App() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [submitClick, setSubmitClick] = useState(false);
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const {isAuthenticated, setIsAuthenticated} = useAuth();
-
+  const { isAuthenticated } = useAuth();
   const [burgerMenuOpen, setBurgerMenuOpen] = useState(false);
   const [footerModals, setFooterModals] = useState({
     privacyOpen: false,
@@ -32,20 +31,28 @@ function App() {
   const [users, setUsers] = useState([]);
 
   const updateClick = useCallback(() => {
-    submitClick ? setSubmitClick(false) : setSubmitClick(true);
-  }, [submitClick]);
+    setSubmitClick((prevSubmitClick) => !prevSubmitClick);
+  }, []);
+
+  // useEffect(() => {
+  //   const checkAuthentication = () => {
+  //     const userData = Cookies.get("userData");
+  //     if (userData) {
+  //       setIsAuthenticated(true);
+  //     }
+  //     setIsCheckingAuth(false);
+  //   };
+
+  //   checkAuthentication();
+  // }, []);
 
   useEffect(() => {
     const getBeaconsData = async () => {
       try {
         const beaconsResponse = await axios.get(
           "http://localhost:3000/beacons"
-        ); // Localhost
-        const usersResponse = await axios.get(
-          "http://localhost:3000/users"
         );
-        // const beaconsResponse = await axios.get('https://interactivemap-1pob.onrender.com/beacons'); // Server deployed on Render
-        // const membersResponse = await axios.get('https://interactivemap-1pob.onrender.com/users');
+        const usersResponse = await axios.get("http://localhost:3000/users");
         setBeacons(beaconsResponse.data);
         setUsers(usersResponse.data);
       } catch (error) {
@@ -53,16 +60,13 @@ function App() {
       }
     };
     getBeaconsData();
-  }, [beacons, users]);
+  }, []);
 
   const { logout } = useAuth();
 
   const handleLogout = async () => {
     try {
-      // Call the logout function from the AuthContext
       await logout();
-
-      // Redirect the user to the home page
       Navigate("/");
     } catch (error) {
       console.error("Error logging out:", error);
@@ -101,17 +105,20 @@ function App() {
             path="/beacon-form"
             element={
               isAuthenticated ? (
-              <BeaconForm
-                beacons={beacons}
-                formSubmitted={formSubmitted}
-                setFormSubmitted={setFormSubmitted}
-              />
+                <BeaconForm
+                  beacons={beacons}
+                  formSubmitted={formSubmitted}
+                  setFormSubmitted={setFormSubmitted}
+                />
               ) : (
                 <Navigate to="/auth/login" />
               )
             }
           />
-          <Route path="/auth/register" element={<Register updateClick={updateClick} />} />
+          <Route
+            path="/auth/register"
+            element={<Register updateClick={updateClick} />}
+          />
           <Route
             path="/auth/login"
             element={<Login updateClick={updateClick} />}
@@ -119,7 +126,7 @@ function App() {
           <Route
             path="/dashboard"
             element={
-              isAuthenticated ? (
+              isAuthenticated || Cookies.get("userData") ? (
                 <Dashboard
                   handleLogout={handleLogout}
                   formSubmitted={formSubmitted}

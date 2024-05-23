@@ -44,20 +44,24 @@ export const AuthProvider = ({ children }) => {
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
-    const storedToken = Cookies.get('token');
-    const storedUserData = Cookies.get('userData');
+    const checkAuthentication = () => {
+      const storedToken = Cookies.get('token');
+      const storedUserData = Cookies.get('userData');
 
-    if (storedToken && storedUserData) {
-      try {
-        const decodedUserData = decodeURIComponent(storedUserData);
-        const parsedUserData = JSON.parse(decodedUserData);
-        axios.defaults.headers.common['Authorization'] = `Bearer ${storedToken}`;
-        setIsAuthenticated(true);
-        setUserData(parsedUserData);
-      } catch (error) {
-        console.error('Error parsing userData cookie:', error);
+      if (storedToken && storedUserData) {
+        try {
+          const decodedUserData = decodeURIComponent(storedUserData);
+          const parsedUserData = JSON.parse(decodedUserData);
+          axios.defaults.headers.common['Authorization'] = `Bearer ${storedToken}`;
+          setIsAuthenticated(true);
+          setUserData(parsedUserData);
+        } catch (error) {
+          console.error('Error parsing userData cookie:', error);
+        }
       }
-    }
+    };
+
+    checkAuthentication();
   }, []);
 
   const login = (newToken, newUserData) => {
