@@ -6,5 +6,6 @@ const profileRouter = express.Router();
 
 // Profile routes
 profileRouter.put('/edit-profile', authenticateUser, verifyPassword, profileControllers.editProfile);
+profileRouter.delete('/delete-profile', authenticateUser, verifyPassword, profileControllers.deleteProfile);
 
 export { profileRouter };

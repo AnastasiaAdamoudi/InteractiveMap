@@ -27,3 +27,26 @@ export const editProfile = async (req, res) => {
     return res.status(500).json({ status: "error", message: "Internal server error" });
   }
 };
+
+export const deleteProfile = async (req, res) => {
+  try {
+    const userId = req.user._id;
+
+    // Find the user by ID and delete the user
+    const deletedUser = await userModel.findByIdAndDelete(userId);
+
+    if (!deletedUser) {
+      return res.status(404).json({ status: "error", message: "User not found" });
+    }
+
+    console.log("User deleted:", deletedUser);
+
+    return res.status(200).json({ status: "success", message: "User deleted", deletedUser });
+
+  } catch (error) {
+
+    console.error("Error deleting user:", error);
+    return res.status(500).json({ status: "error", message: "Internal server error" });
+  }
+
+};

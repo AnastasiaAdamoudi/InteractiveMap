@@ -107,49 +107,6 @@ export async function unjoinBeacon(req, res) {
   }
 }
 
-export async function deleteUserAccount(req, res) {
-  const userId = req.user._id;
-
-  try {
-    // Check if the user exists
-    const existingUser = await userModel.findById(userId);
-    if (!existingUser) {
-      return res
-        .status(404)
-        .json({ status: "error", message: "User not found" });
-    }
-
-    // Get all beacons the user has joined
-    const joinedBeacons = await beaconModel.find({ members: userId });
-
-    // Remove the user from all joined beacons
-    for (const beacon of joinedBeacons) {
-      beacon.members = beacon.members.filter(
-        (user) => user.toString() !== userId.toString()
-      );
-      await beacon.save();
-    }
-
-    // Remove the user's beacon references
-    await userModel.findByIdAndUpdate(userId, { $set: { beacon: [] } });
-
-    // Delete the user document
-    await userModel.findByIdAndDelete(userId);
-
-    res
-      .status(200)
-      .json({
-        status: "success",
-        message: "User account deleted successfully",
-      });
-  } catch (error) {
-    console.error("Error deleting user account:", error);
-    res
-      .status(500)
-      .json({ status: "error", message: "Failed to delete user account" });
-  }
-}
-
 export async function getMembersByBeacon(req, res) {
   const { beaconId } = req.params;
 
