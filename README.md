@@ -116,6 +116,6 @@ Open the local host link that is displayed on your terminal to view the client o
 
 **Design:** Canva
 
-**Development:** React.js, React Router, React Leaflet, CSS, Node.js, Express, MongoDB
+**Development:** React.js, React Router, React Leaflet, React Hook Form, CSS, Node.js, Express, MongoDB
 
 
