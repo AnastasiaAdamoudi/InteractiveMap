@@ -1,6 +1,6 @@
 # Light A Beacon
 
-A website to introduce an upcoming retreat, to capture its unique characteristics and offerings. Created for Campfire Network.
+A web app for creating and joining beacons. Created for Campfire Network.
 
 ### The challenge:
 Create a web app that allows users to login and create "beacons", as well as join other members' beacons. Show all the beacons on a map.
